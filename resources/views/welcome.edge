@@ -1,20 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Hello Adonis</title>
-  {{ style('style') }}
-</head>
-<body>
-  <section>
+@Layout('template')
+@section('navbar')
     <div class="logo"></div>
-    <div class="title"></div>
+    <form action ="/register" method = "POST">
+      <fieldset>
+        <legend>Personal information:</legend>
+          First name:<br>
+            <input type="text" name="firstname" value=""><br>
+          Last name:<br>
+            <input type="text" name="lastname" value=""><br><br>
+            <input type="submit" value="Submit">
+      </fieldset>
+    </form> 
     <div class="subtitle">
-      <p>AdonisJs simplicity will make you feel confident about your code</p>
-      <p>
-        Don't know where to start? Read the <a href="https://adonisjs.com/docs">documentation</a>.
-      </p>
     </div>
-  </section>
-</body>
-</html>
+@endsection

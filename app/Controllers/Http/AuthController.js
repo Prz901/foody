@@ -1,6 +1,5 @@
-'use strict'
+"use strict";
 
-class AuthController {
-}
+class AuthController {}
 
-module.exports = AuthController
+module.exports = AuthController;
