@@ -3,15 +3,20 @@
 <div class="register-box">
     <div class="logo"></div>
     <div class="form-box">
-      <form >
+      <form action="/login" method="post">
         <fieldset>
           <legend>Personal information:</legend>
+          @if(message)
+        <h1>{{message}}</h1>
+        @else
+        <h1>teste</h1>
+      @endif
           E-mail:
-          <input type="email" class="form-control" name="firstname" value=""><br>
+          <input type="email" class="form-control" name="email" value=""><br>
           Password:
-          <input type="password" class="form-control" name="lastname" value=""><br>
-          <input type="submit" class="btn btn-success" value="Login"><br>
-          <a href = '/register' class="btn btn-danger">Register</a>
+          <input type="password" class="form-control" name="password" value=""><br>
+          <button type="submit" class="btn btn-success">Login</button><br>
+          <a href='/register' class="btn btn-danger">Register</a>
         </fieldset>
       </form> 
     </div>
