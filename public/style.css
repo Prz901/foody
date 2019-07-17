@@ -16,6 +16,10 @@ body {
   );
 }
 
+.body-inside {
+  background-color: aliceblue;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -60,6 +64,28 @@ section:before {
   animation: slideUp 1s cubic-bezier(0.19, 1, 0.3, 1) 0.2s forwards;
 }
 
+.register-box {
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  align-items: center;
+  max-width: 536px;
+  margin: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-box {
+  margin: 20px;
+  margin-top: -50px;
+}
+
+.menu {
+  background-color: red;
+}
+
 .subtitle {
   margin-top: 25px;
   color: #bdb3cb;
@@ -77,6 +103,10 @@ a {
 
 p {
   margin: 0.83rem 0;
+}
+
+li {
+  text-align: left;
 }
 
 @keyframes slideUp {
