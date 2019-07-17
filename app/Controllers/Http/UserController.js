@@ -1,14 +1,11 @@
-"use strict";
+'use strict'
 
-const User = use("App/Models/User");
+const User = use('App/Models/User');
 
 class UserController {
-  async index({ request, response }) {
-    const users = await User.all();
-    response.status(200).send(users);
-  }
 
     async index({request, response, auth}) {
+        return response.redirect('/');
         if(auth == true){
             const users = await User.all();
             response.status(200).send(users);
@@ -25,7 +22,7 @@ class UserController {
     }
 
     async login({request, response, params}) {
-        const data = await User.find(email.params);
+        const data = await User.find(params.email);
         if(data == null){
             send("User not found");
         } else {
@@ -33,7 +30,7 @@ class UserController {
                 response.render('feedclient');
             }
             if((email.params == data.password) && (data.type == "admin")){
-                response.render('feedadmin');
+                response.send("user is an admin");
             }
         }
 
@@ -48,4 +45,4 @@ class UserController {
     }
 }
 
-module.exports = UserController;
+module.exports = UserController

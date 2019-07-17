@@ -26,3 +26,10 @@ Route.post('/auth', 'AuthController.authenticate');
 //User
 Route.post("/register", "UserController.store");
 Route.get("/user", "UserController.index");
+Route.post('/login', 'AuthController.authenticate');
+
+//Admin Home
+Route.get('/admin','AdminController.home').middleware('auth');
+
+//Client Home
+Route.get('/client','ClientController.home').middleware('auth');
