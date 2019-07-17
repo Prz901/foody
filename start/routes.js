@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 /*
 |--------------------------------------------------------------------------
@@ -14,13 +14,12 @@
 */
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
-const Route = use('Route')
+const Route = use("Route");
 
-Route.on('/').render('welcome')
-Route.on('/register').render('register')
-Route.on('/feedadmin').render('feedadmin')
+Route.on("/").render("welcome");
+Route.on("/register").render("register");
+Route.on("/feedadmin").render("feedadmin");
 
 //User
-Route.post('/user', 'UserController.store');
-Route.get('/user', 'UserController.index');
-
+Route.post("/register", "UserController.store");
+Route.get("/user", "UserController.index");
