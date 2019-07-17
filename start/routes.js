@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +24,5 @@ Route.on('/feedadmin').render('feedadmin');
 Route.post('/auth', 'AuthController.authenticate');
 
 //User
-Route.post('/user', 'UserController.store');
-Route.get('/user', 'UserController.index').middleware('auth');
-
+Route.post("/register", "UserController.store");
+Route.get("/user", "UserController.index");

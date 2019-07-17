@@ -1,8 +1,12 @@
-'use strict'
+"use strict";
 
-const User = use('App/Models/User');
+const User = use("App/Models/User");
 
 class UserController {
+  async index({ request, response }) {
+    const users = await User.all();
+    response.status(200).send(users);
+  }
 
     async index({request, response, auth}) {
         if(auth == true){
@@ -44,4 +48,4 @@ class UserController {
     }
 }
 
-module.exports = UserController
+module.exports = UserController;
