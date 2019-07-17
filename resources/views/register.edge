@@ -1,17 +1,18 @@
 @layout('template')
-@section('form-login')
+@section('form-register')
 <div class="register-box">
     <div class="logo"></div>
     <div class="form-box">
       <form action="/register" method="POST">
         <fieldset>
-          <legend>Personal information:</legend>
+          <legend>Register:</legend>
+          User name:
+          <input type="text" class="form-control" name="username" value=""><br>
           E-mail:
-          <input type="email" class="form-control" name="firstname" value=""><br>
+          <input type="email" class="form-control" name="email" value=""><br>
           Password:
           <input type="password" class="form-control" name="lastname" value=""><br>
-          <input type="submit" class="btn btn-success" value="Login"><br>
-          <button class="btn btn-danger">Register</button>
+          <input type="submit" class="btn btn-success" value="Register"><br>
         </fieldset>
       </form> 
     </div>

@@ -17,3 +17,10 @@
 const Route = use('Route')
 
 Route.on('/').render('welcome')
+Route.on('/register').render('register')
+Route.on('/feedadmin').render('feedadmin')
+
+//User
+Route.post('/user', 'UserController.store');
+Route.get('/user', 'UserController.index');
+
