@@ -22,14 +22,23 @@ Route.on('/feedadmin').render('feedadmin');
 
 //Auth
 Route.post('/auth', 'AuthController.authenticate');
+Route.post('/token', 'AuthController.getToken');
 
 //User
 Route.post("/register", "UserController.store");
 Route.get("/user", "UserController.index");
 Route.post('/login', 'AuthController.authenticate');
+Route.put('/user/:id', 'UserController.update');
+Route.delete('/user/:id', 'UserController.destroy');
 
 //Admin Home
 Route.get('/admin','AdminController.home').middleware('auth');
 
 //Client Home
 Route.get('/client','ClientController.home').middleware('auth');
+
+//Category
+Route.get('/category', 'CategoryController.index');
+Route.post('/category', 'CategoryController.store').middleware('auth');
+Route.put('/category/:id', 'CategoryController.update');
+Route.delete('/category/:id', 'CategoryController.destroy');

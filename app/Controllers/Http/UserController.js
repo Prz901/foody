@@ -37,11 +37,18 @@ class UserController {
     }
 
     async update({request, response, params}){
-        
+        const data = request.all();
+        const { id } = params;
+        const user = await User.findBy('id', id);
+        user.merge(data);
+        await user.save();
+        return response.send(user);
     }
 
     async destroy({request, response, params}){
-
+        const user = await User.findOrFail(params.id);
+        await user.delete();
+        return response.send("Usuário deletado com sucesso");
     }
 }
 
