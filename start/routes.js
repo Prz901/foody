@@ -19,6 +19,7 @@ const Route = use("Route");
 Route.on("/").render("welcome");
 Route.on("/register").render("register");
 Route.on("/feedadmin").render("feedadmin");
+Route.on("/categoria").render("category");
 
 //Auth
 Route.post("/auth", "AuthController.authenticate");
@@ -30,7 +31,7 @@ Route.get("/user", "UserController.index");
 Route.post("/login", "AuthController.authenticate");
 Route.put("/user/:id", "UserController.update");
 Route.delete("/user/:id", "UserController.destroy");
-Route.get("/login", "UserController.logout");
+Route.get("/logout", "UserController.logout");
 
 //Admin Home
 Route.get("/admin", "AdminController.home").middleware("auth");
@@ -39,7 +40,7 @@ Route.get("/admin", "AdminController.home").middleware("auth");
 Route.get("/client", "ClientController.home").middleware("auth");
 
 //Category
-Route.get("/category", "CategoryController.index");
+Route.get("/category", "CategoryController.index").middleware("auth");
 Route.post("/category", "CategoryController.store").middleware("auth");
 Route.put("/category/:id", "CategoryController.update");
 Route.delete("/category/:id", "CategoryController.destroy");
