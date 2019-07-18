@@ -1,9 +1,9 @@
-'use strict'
+"use strict";
 
 class ClientController {
-    async home({view}){
-        return view.render('feedclient');
-    }
+  async home({ view }) {
+    return view.render("feedclient");
+  }
 }
 
-module.exports = ClientController
+module.exports = ClientController;

@@ -1,9 +1,9 @@
-'use strict'
+"use strict";
 
 class AdminController {
-    async home({view}){
-        return view.render('feedadmin');
-    }
+  async home({ view }) {
+    return view.render("feedadmin");
+  }
 }
 
-module.exports = AdminController
+module.exports = AdminController;
