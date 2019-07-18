@@ -47,9 +47,9 @@ class UserController {
     await user.delete();
     return response.send("Usuário deletado com sucesso");
   }
-  async logout({ auth, view }) {
+  async logout({ auth, response }) {
     await auth.logout();
-    return view.render("welcome");
+    return response.redirect("/");
   }
 }
 

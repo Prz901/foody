@@ -4,7 +4,7 @@ const Category = use("App/Models/Category");
 const User = use("App/Models/User");
 
 class CategoryController {
-  async index({ request, response }) {
+  async index({ response }) {
     const categories = await Category.all();
     return response.status(200).send(categories);
   }
