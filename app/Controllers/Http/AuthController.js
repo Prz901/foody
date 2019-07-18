@@ -16,6 +16,14 @@ class AuthController {
         }
         return view.render('/login',{message:"login incorreto"});
     }
+
+    async getToken({ request, response, auth }){
+        const { email, password } = request.all();
+
+        const token = await auth.attempt(email, password);
+
+        response.send(token);
+    }
 }
 
 module.exports = AuthController;
