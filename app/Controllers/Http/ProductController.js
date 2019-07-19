@@ -21,7 +21,8 @@ class ProductController {
    */
   async index({ request, response, view }) {
     const products = await Product.all();
-    return response.status(200).send(products);
+    //return response.status(200).send(products);
+    return view.render('product', { products });
   }
   /**
    * Create/save a new product.
@@ -38,9 +39,10 @@ class ProductController {
         "price",
         "id_categories"
       ]);
+      console.log('deu certo')
       data.id_users = auth.user.id;
       const product = await Product.create(data);
-      return response.status(200).send("Produto cadastrado", product);
+      return response.status(200).send(product);
     }
   }
   /**
