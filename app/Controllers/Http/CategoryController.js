@@ -4,9 +4,12 @@ const Category = use("App/Models/Category");
 const User = use("App/Models/User");
 
 class CategoryController {
-  async index({ response }) {
+  async index({ response, view }) {
     const categories = await Category.all();
-    return response.status(200).send(categories);
+    //return response.status(200).send(categories);
+    console.log('FOI');
+    console.log(categories);
+    return view.render('category', { categories });
   }
 
   async store({ request, response, auth }) {
