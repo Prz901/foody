@@ -39,10 +39,12 @@ Route.get("/admin", "AdminController.home").middleware("auth");
 //Client Home
 Route.get("/client", "ClientController.home").middleware("auth");
 
-//Category
-Route.get("/category", "CategoryController.index").middleware("auth");
-Route.post("/category", "CategoryController.store").middleware("auth");
-Route.put("/category/:id", "CategoryController.update");
-Route.delete("/category/:id", "CategoryController.destroy");
+//Category routes
+Route.group(() => {
+  Route.resource("category", "CategoryController");
+}).middleware("auth");
 
-//Product
+//Product routes
+Route.group(() => {
+  Route.resource("product", "ProductController");
+}).middleware("auth");
