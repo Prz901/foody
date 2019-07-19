@@ -1,8 +1,10 @@
-'use strict'
+"use strict";
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
+
+const Product = use("App/Models/Product");
 
 /**
  * Resourceful controller for interacting with products
@@ -17,21 +19,10 @@ class ProductController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index ({ request, response, view }) {
+  async index({ request, response, view }) {
+    const products = await Product.all();
+    return response.status(200).send(products);
   }
-
-  /**
-   * Render a form to be used for creating a new product.
-   * GET products/create
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async create ({ request, response, view }) {
-  }
-
   /**
    * Create/save a new product.
    * POST products
@@ -40,33 +31,18 @@ class ProductController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async store ({ request, response }) {
+  async store({ request, response, auth }) {
+    if (auth.user && auth.user.type == "admin") {
+      const data = await request.only([
+        "product_name",
+        "price",
+        "id_categories"
+      ]);
+      data.id_users = auth.user.id;
+      const product = await Product.create(data);
+      return response.status(200).send("Produto cadastrado", product);
+    }
   }
-
-  /**
-   * Display a single product.
-   * GET products/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async show ({ params, request, response, view }) {
-  }
-
-  /**
-   * Render a form to update an existing product.
-   * GET products/:id/edit
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async edit ({ params, request, response, view }) {
-  }
-
   /**
    * Update product details.
    * PUT or PATCH products/:id
@@ -75,9 +51,16 @@ class ProductController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async update ({ params, request, response }) {
+  async update({ params, request, response, auth }) {
+    if (auth.user && auth.user.type == "admin") {
+      const { id } = params;
+      const data = request.all();
+      const product = await Product.findBy("id", id);
+      product.merge(data);
+      await product.save();
+      return response.send(product);
+    }
   }
-
   /**
    * Delete a product with id.
    * DELETE products/:id
@@ -86,8 +69,13 @@ class ProductController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async destroy ({ params, request, response }) {
+  async destroy({ response, params, auth }) {
+    if (auth.user && auth.user.type == "admin") {
+      const data = await Product.findOrFail(params.id);
+      await data.delete();
+      return response.status(200).send("Produto deletado com sucesso");
+    }
   }
 }
 
-module.exports = ProductController
+module.exports = ProductController;

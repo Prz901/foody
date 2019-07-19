@@ -8,6 +8,7 @@ class CategoryController {
     const categories = await Category.all();
     //return response.status(200).send(categories);
     console.log('FOI');
+    console.log(categories);
     return view.render('category', { categories });
   }
 
