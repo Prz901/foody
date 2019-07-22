@@ -5,9 +5,10 @@
     </nav>
 @endsection
 @section('list')
-    <ul>
-        @each(category in categories)
-        <li> {{ category.category_name }} </li>
+    <button class="btn btn-success" onClick="">Create new category</button>
+    <ul class="list-group">
+        @each(category in categories.toJSON())
+            <li class="list-group-item" id=""> {{ category.category_name }} <button class="btn btn-info btn-sm" onClick="">Edit</button><button class="btn btn-dark btn-sm">Delete</button></li>
         @endeach
     </ul>
 @endsection

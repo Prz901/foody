@@ -5,13 +5,10 @@
         </nav>
 @endsection
 @section('admin-home')
-<h1 class="display-3">Welcome {{username}}</h1>
+<h1 class="display-3">Welcome,{{users.username}}</h1>
   <div>
     <a href="/category" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Category</a>
-    <br></br>
     <a href="/user" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Users</a>
-    <br></br>
     <a href="/product" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Product</a>
-    <br></br>
   </div>
 @endsection
