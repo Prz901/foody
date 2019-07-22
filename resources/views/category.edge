@@ -6,8 +6,8 @@
 @endsection
 @section('list')
     <ul>
-        @each(category in categories)
-        <li> {{ category.category_name }} </li>
+        @each(category in categories.toJSON())
+            <li> {{ category.category_name }} </li>
         @endeach
     </ul>
 @endsection
