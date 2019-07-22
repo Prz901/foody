@@ -44,7 +44,7 @@ Route.group(() => {
   Route.resource("category", "CategoryController");
 }).middleware("auth");
 
-Route.post('/product', 'ProductController.store');
+//Route.post('/product', 'ProductController.store').middleware("auth");
 
 //Product routes
 Route.group(() => {
@@ -52,5 +52,5 @@ Route.group(() => {
 }).middleware("auth");
 
 //Cart
-Route.post('/product/:id/cart', 'CartController.addOn');
+Route.post('/product/:id/cart', 'CartController.addOn').middleware("auth");
 Route.get('/cart', 'CartController.list');
