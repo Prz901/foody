@@ -10,64 +10,81 @@ body {
   background-color: whitesmoke;
 }
 
-
 * {
-    margin: 0;
-    padding: 0;
-  }
-  
-  section {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 536px;
-    margin: auto;
-    position: relative;
-  }
-  
-  section:before {
-    content: "";
-    position: absolute;
-    background-size: 100%;
-    width: 100%;
-    height: 402px;
-    z-index: -1;
-  }
+  margin: 0;
+  padding: 0;
+}
 
-  .title {
-    background: url("/title.svg") no-repeat;
-    width: 219px;
-    height: 36px;
-    background-size: 100%;
-    opacity: 0;
-    animation: slideUp 1s cubic-bezier(0.19, 1, 0.3, 1) 0.2s forwards;
-  }
-  
-  .register-box {
-    background-color: white;
-    padding: 40px;
-    border-radius: 10px;
-    align-items: center;
-    max-width: 536px;
-    margin: auto;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 10%;
-  }
+section {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 536px;
+  margin: auto;
+  position: relative;
+}
 
-  .menu {
-    background-color: red;
-  }
-  
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-  
-  p {
-    margin: 0.83rem 0;
-  }
+section:before {
+  content: "";
+  position: absolute;
+  background-size: 100%;
+  width: 100%;
+  height: 402px;
+  z-index: -1;
+}
+
+.title {
+  background: url("/title.svg") no-repeat;
+  width: 219px;
+  height: 36px;
+  background-size: 100%;
+  opacity: 0;
+  animation: slideUp 1s cubic-bezier(0.19, 1, 0.3, 1) 0.2s forwards;
+}
+
+.register-box {
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  align-items: center;
+  max-width: 536px;
+  margin: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10%;
+}
+
+.menu {
+  background-color: red;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+p {
+  margin: 0.83rem 0;
+}
+.register-box {
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  align-items: center;
+  max-width: 536px;
+  margin: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10%;
+}
+.logoutButton {
+  margin-left: 85%;
+}
+.internalButton {
+}

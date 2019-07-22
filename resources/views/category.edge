@@ -5,9 +5,32 @@
     </nav>
 @endsection
 @section('list')
-    <ul>
+<div class="container">
+        <div class="row">
+<table class="table  table-bordered  table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">categoria</th>
+        <th scope="col">acoes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
         @each(category in categories.toJSON())
-            <li> {{ category.category_name }} </li>
+            <tr> 
+                    <td>
+                    {{ category.id }} 
+                    </td>
+                    <td>
+                    {{ category.category_name }} 
+                    </td>
+                    <td>
+                    </td>
+            </tr>
         @endeach
-    </ul>
+        </tbody>
+    </thead>
+</div>
+</div>
 @endsection

@@ -18,7 +18,6 @@ const Route = use("Route");
 
 Route.on("/").render("welcome");
 Route.on("/register").render("register");
-Route.on("/feedadmin").render("feedadmin");
 Route.on("/categoria").render("category");
 
 //Auth

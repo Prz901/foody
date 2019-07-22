@@ -6,7 +6,7 @@ class UserController {
   async index({ response, auth }) {
     if (auth.user && auth.user.type == "admin") {
       const users = await User.all();
-      response.status(200).send({ users });
+      response.status(200).send(users);
     } else {
       response.send("Sem permissão para ver usuários");
     }
