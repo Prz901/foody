@@ -21,7 +21,7 @@ class CategoryController {
 
   async update({ request, response, params, auth }) {
     if (auth.user && auth.user.type == "admin") {
-      const { id } = params;
+      //const { id } = params;
       const data = request.all();
       const category = await Category.findBy("id", id);
       category.merge(data);

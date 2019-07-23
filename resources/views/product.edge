@@ -11,20 +11,28 @@
     <thead>
       <tr>
         <th scope="col">#</th>
+        <th scope="col">produto</th>
+        <th scope="col">preço</th>
         <th scope="col">categoria</th>
         <th scope="col">acoes</th>
       </tr>
     </thead>
-    <form action="/category" method="post">
+    <form action="/product" method="post">
     <tbody>
       <tr>
-        @each(category in categories.toJSON())
+        @each(product in products.toJSON())
             <tr> 
-                    <td name="id_category">
-                        {{ category.id }}
+                    <td name="id_product">
+                        {{ product.id }}
                     </td>
-                    <td name="category_name">
-                        {{ category.category_name }}
+                    <td name="product_name">
+                        {{ product.product_name }}
+                    </td>
+                    <td name="price">
+                        {{ product.price }}
+                    </td>
+                    <td name="id_categories">
+                        {{ product.id_categories }}
                     </td>
                     <td>
                       <a class="btn btn-info btn-sm" href="">Edit</a>

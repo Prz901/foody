@@ -22,8 +22,8 @@ class ProductController {
    */
   async index({ request, response, view}) {
     const products = await Product.all();
-    return response.status(200).send(products);
-    //return view.render('product', { products });
+    //return response.status(200).send(products);
+    return view.render('product', { products });
   }
   /**
    * Create/save a new product.
