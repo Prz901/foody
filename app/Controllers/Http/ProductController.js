@@ -5,7 +5,6 @@
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
 const Product = use("App/Models/Product");
-const User = use("App/Models/User");
 
 /**
  * Resourceful controller for interacting with products
@@ -20,10 +19,10 @@ class ProductController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index({ request, response, view}) {
+  async index({ request, response, view }) {
     const products = await Product.all();
-    return response.status(200).send(products);
-    //return view.render('product', { products });
+    //return response.status(200).send(products);
+    return view.render('product', { products });
   }
   /**
    * Create/save a new product.
@@ -34,12 +33,13 @@ class ProductController {
    * @param {Response} ctx.response
    */
   async store({ request, response, auth }) {
-    if(auth.user && auth.user.type == 'admin') {
+    if (auth.user && auth.user.type == "admin") {
       const data = await request.only([
         "product_name",
         "price",
         "id_categories"
       ]);
+      console.log('deu certo')
       data.id_users = auth.user.id;
       const product = await Product.create(data);
       return response.status(200).send(product);

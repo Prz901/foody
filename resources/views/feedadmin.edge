@@ -2,16 +2,16 @@
 @section('navbar-admin')
         <nav class="navbar navbar-expand-lg bg-red" class="menu">
           <h1 class="navbar-brand" href="#">Foody</h1>
+          <a href="/logout" class="logoutButton" role="button" aria-pressed="true">Logout</a>
         </nav>
 @endsection
 @section('admin-home')
-<h1 class="display-3">Welcome {{username}}</h1>
-  <div>
-    <a href="/category" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Category</a>
-    <br></br>
-    <a href="/user" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Users</a>
-    <br></br>
-    <a href="/product" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Product</a>
-    <br></br>
+<div class = "register-box">
+<h2  >Welcome, {{username}}</h2>
+  <div class = "internalButton">
+    <a href="/category" class="btn btn-light btn active mt-2 w-100" max-width="200px"  role="button" aria-pressed="true">Category</a>
+    <a href="/user" class="btn btn-light btn active mt-2 w-100" max-width="200px"  role="button" aria-pressed="true">Users</a>
+    <a href="/product" class="btn btn-light btn active mt-2 w-100" max-width="200px" role="button" aria-pressed="true">Product</a>
   </div>
+</div> 
 @endsection

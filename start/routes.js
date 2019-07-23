@@ -18,7 +18,6 @@ const Route = use("Route");
 
 Route.on("/").render("welcome");
 Route.on("/register").render("register");
-Route.on("/feedadmin").render("feedadmin");
 Route.on("/categoria").render("category");
 
 //Auth
@@ -44,7 +43,7 @@ Route.group(() => {
   Route.resource("category", "CategoryController");
 }).middleware("auth");
 
-//Route.post('/product', 'ProductController.store').middleware("auth");
+Route.post('/product', 'ProductController.store');
 
 //Product routes
 Route.group(() => {
@@ -52,5 +51,5 @@ Route.group(() => {
 }).middleware("auth");
 
 //Cart
-Route.post('/product/:id/cart', 'CartController.addOn').middleware("auth");
+Route.post('/product/:id/cart', 'CartController.addOn');
 Route.get('/cart', 'CartController.list');

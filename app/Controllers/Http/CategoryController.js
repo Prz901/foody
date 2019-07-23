@@ -7,9 +7,7 @@ class CategoryController {
   async index({ response, view }) {
     const categories = await Category.all();
     //return response.status(200).send(categories);
-    console.log('FOI');
-    console.log(categories);
-    return view.render('category', { categories });
+    return view.render("category", { categories });
   }
 
   async store({ request, response, auth }) {
@@ -23,7 +21,7 @@ class CategoryController {
 
   async update({ request, response, params, auth }) {
     if (auth.user && auth.user.type == "admin") {
-      const { id } = params;
+      //const { id } = params;
       const data = request.all();
       const category = await Category.findBy("id", id);
       category.merge(data);
