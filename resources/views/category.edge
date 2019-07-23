@@ -15,6 +15,9 @@
         <th scope="col">ações</th>
       </tr>
     </thead>
+      </tr>
+    </thead>
+    <form action="/category" method="post">
     <tbody>
       <tr>
         @each(category in categories.toJSON())
@@ -25,14 +28,16 @@
                     <td>
                         {{ category.category_name }} 
                     </td>
-                    <td>   
-                        <button type="button" class="btn btn-outline-info btn-sm">Editar</button>
-                        <button type="button" class="btn btn-outline-danger btn-sm">Deletar</button>
+                    <td>
+                            <a class="btn btn-outline-info btn-sm" href="">Editar</a>
+                            <a class="btn btn-outline-dark btn-sm" href="">Deletar</a>
                     </td>
             </tr>
         @endeach
-        </tbody>
+    </tbody>
+    </form>
     </thead>
 </div>
 </div>
+<p>Para adicionar uma nova categoria <a href="#" class="btn btn-outline-success btn-sm">+</a></p>
 @endsection

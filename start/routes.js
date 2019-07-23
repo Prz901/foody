@@ -43,7 +43,13 @@ Route.group(() => {
   Route.resource("category", "CategoryController");
 }).middleware("auth");
 
+Route.post('/product', 'ProductController.store');
+
 //Product routes
 Route.group(() => {
   Route.resource("product", "ProductController");
 }).middleware("auth");
+
+//Cart
+Route.post('/product/:id/cart', 'CartController.addOn');
+Route.get('/cart', 'CartController.list');

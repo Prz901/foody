@@ -1,0 +1,49 @@
+@layout('LogedTemplate.edge')
+@section('navbar-admin')
+    <nav class="navbar navbar-expand-lg" class="menu">
+        <h1 class="navbar-brand" href="#">Foody</h1>
+    </nav>
+@endsection
+@section('list')
+<div class="container">
+        <div class="row">
+<table class="table  table-bordered  table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">produto</th>
+        <th scope="col">preço</th>
+        <th scope="col">categoria</th>
+        <th scope="col">acoes</th>
+      </tr>
+    </thead>
+    <form action="/product" method="post">
+    <tbody>
+      <tr>
+        @each(product in products.toJSON())
+            <tr> 
+                    <td name="id_product">
+                        {{ product.id }}
+                    </td>
+                    <td name="product_name">
+                        {{ product.product_name }}
+                    </td>
+                    <td name="price">
+                        {{ product.price }}
+                    </td>
+                    <td name="id_categories">
+                        {{ product.id_categories }}
+                    </td>
+                    <td>
+                      <a class="btn btn-info btn-sm" href="">Edit</a>
+                      <a class="btn btn-dark btn-sm" href="">Delete</a>
+                      <a href="/product/:id/cart" class="btn btn-secondary btn-sm">+</a>
+                    </td>
+            </tr>
+        @endeach
+    </tbody>
+    </form>
+    </thead>
+</div>
+</div>
+@endsection
