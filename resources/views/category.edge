@@ -1,7 +1,7 @@
 @layout('LogedTemplate.edge')
 @section('navbar-admin')
     <nav class="navbar navbar-expand-lg" class="menu">
-        <h1 class="navbar-brand" href="#">Foody</h1>
+        <h1 class="navbar-brand"><a href="/admin">Foody</a></h1>
     </nav>
 @endsection
 @section('list')
@@ -12,7 +12,7 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">categoria</th>
-        <th scope="col">acoes</th>
+        <th scope="col">ações</th>
       </tr>
     </thead>
     <tbody>
@@ -20,12 +20,14 @@
         @each(category in categories.toJSON())
             <tr> 
                     <td>
-                    {{ category.id }} 
+                        {{ category.id }} 
                     </td>
                     <td>
-                    {{ category.category_name }} 
+                        {{ category.category_name }} 
                     </td>
-                    <td>
+                    <td>   
+                        <button type="button" class="btn btn-outline-info btn-sm">Editar</button>
+                        <button type="button" class="btn btn-outline-danger btn-sm">Deletar</button>
                     </td>
             </tr>
         @endeach
