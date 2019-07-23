@@ -16,12 +16,12 @@
   </tr>
 </thead>
 <tbody>
-@each(product in products)
+@each(product in products.toJSON())
   <tr>
     <td>{{product.product_name}}</td>
     <td>{{product.price}}</td>
     <td>{{product.id_category}}</td>
-    <td><a href="/product/:id/cart">+</a></td>
+    <td><a href="/cart">+</a></td>
   </tr>
 @endeach
 </tbody>

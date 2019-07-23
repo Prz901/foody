@@ -4,9 +4,10 @@ const Product = use('App/Models/Product');
 
 class CartController {
     
-    async addOn({request, response, params, auth}){
+    async addOn({request, response, params, auth, session}){
         if(auth.user && auth.user.type == 'client') {
             var data = [];
+            data = request.only(["id", "product_name", "price", "id_categories"]);
             
             // let cart = data;
             console.log(data);
