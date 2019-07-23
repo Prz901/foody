@@ -1,7 +1,7 @@
 @layout('LogedTemplate.edge')
 @section('navbar-admin')
     <nav class="navbar navbar-expand-lg" class="menu">
-        <h1 class="navbar-brand" href="#">Foody</h1>
+        <h1 class="navbar-brand"><a href="/admin">Foody</a></h1>
     </nav>
 @endsection
 @section('list')
@@ -12,7 +12,9 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">categoria</th>
-        <th scope="col">acoes</th>
+        <th scope="col">ações</th>
+      </tr>
+    </thead>
       </tr>
     </thead>
     <form action="/category" method="post">
@@ -20,16 +22,15 @@
       <tr>
         @each(category in categories.toJSON())
             <tr> 
-                    <td name="id_category">
-                        {{ category.id }}
-                    </td>
-                    <td name="category_name">
-                        {{ category.category_name }}
+                    <td>
+                        {{ category.id }} 
                     </td>
                     <td>
-                      <a class="btn btn-info btn-sm" href="">Edit</a>
-                      <a class="btn btn-dark btn-sm" href="">Delete</a>
-                      <a href="/product/:id/cart" class="btn btn-secondary btn-sm">+</a>
+                        {{ category.category_name }} 
+                    </td>
+                    <td>
+                            <a class="btn btn-outline-info btn-sm" href="">Editar</a>
+                            <a class="btn btn-outline-dark btn-sm" href="">Deletar</a>
                     </td>
             </tr>
         @endeach
@@ -38,4 +39,5 @@
     </thead>
 </div>
 </div>
+<p>Para adicionar uma nova categoria <a href="#" class="btn btn-outline-success btn-sm">+</a></p>
 @endsection
