@@ -3,12 +3,12 @@
 const Category = use("App/Models/Category");
 
 class CategoryProductController {
-  async index({ params, response, auth }) {
+  async index({ params, response, auth, view }) {
     if (auth.user && auth.user.type == "client") {
-      const category = await Category.findByOrFail("id", params.id);
-      const product = await category.product().fetch();
+      const category = await Category.findBy("id", params.id);
+      const products = await category.product().fetch();
 
-      return response.send({ product });
+      return view.render("productlist", { products });
     }
   }
 }
