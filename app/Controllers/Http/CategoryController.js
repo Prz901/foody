@@ -21,13 +21,18 @@ class CategoryController {
 
   async update({ request, response, params, auth }) {
     if (auth.user && auth.user.type == "admin") {
-      //const { id } = params;
-      const data = request.all();
+      const { id } = params;
+      const data = request.only(["category_name"]);
       const category = await Category.findBy("id", id);
       category.merge(data);
       await category.save();
-      return response.send(category);
+      return response.redirect("/category");
     }
+  }
+
+  async show({ response, params, auth, view}) {
+    const category = await Category.findByOrFail('id', params.id);
+    return view.render("editcategory", { category });
   }
 
   async destroy({ response, params, auth }) {
