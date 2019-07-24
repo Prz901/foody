@@ -1,8 +1,8 @@
 @layout('LogedTemplate.edge')
 @section('navbar-admin')
     <nav class="navbar navbar-expand-lg" class="menu">
-        <h1 class="navbar-brand" href="#">Foody</h1>
-        <a href="/logout" class="logoutButton" role="button" aria-pressed="true">Logout</a>
+        <h1 class="navbar-brand"><a href="/admin">Foody</a></h1>
+        <a href="/logout" class="logoutButton" role="button" aria-pressed="true">Logout</a>   
     </nav>
 @endsection
 @section('list')
@@ -36,9 +36,8 @@
                         {{ product.id_categories }}
                     </td>
                     <td>
-                      <a class="btn btn-info btn-sm" href="">Edit</a>
-                      <a class="btn btn-dark btn-sm" href="">Delete</a>
-                      <a href="/product/:id/cart" class="btn btn-secondary btn-sm">+</a>
+                        <a class="btn btn-outline-info btn-sm" href="">Editar</a>
+                        <a class="btn btn-outline-dark btn-sm" href="">Deletar</a>
                     </td>
             </tr>
         @endeach
@@ -47,4 +46,5 @@
     </thead>
 </div>
 </div>
+<p>Para adicionar uma novo produto <a href="#" class="btn btn-outline-success btn-sm">+</a></p>
 @endsection

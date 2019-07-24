@@ -45,8 +45,7 @@ Route.get('/editcategory/:id', 'CategoryController.show');
 Route.get('/category', 'CategoryController.index');
 Route.post('/category', 'CategoryController.store');
 
-
-Route.post('/product', 'ProductController.store');
+Route.post("/product", "ProductController.store");
 
 //Product routes
 Route.group(() => {
@@ -54,8 +53,5 @@ Route.group(() => {
 }).middleware("auth");
 
 //Cart
-Route.post('/cart', ({ session }) => {
-  session.put('username', data)
-})
-/*Route.post('/product/:id/cart', 'CartController.addOn');
-Route.get('/cart', 'CartController.list');*/
+Route.post("/product/:id/cart", "CartController.addOn");
+Route.get("/cart", "CartController.list");
