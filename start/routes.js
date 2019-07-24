@@ -57,5 +57,5 @@ Route.group(() => {
 }).middleware("auth");
 
 //Cart
-Route.post("/product/:id/cart", "CartController.addOn");
+Route.get("/product/:id/cart", "CartController.addOn").middleware("auth");
 Route.get("/cart", "CartController.list");
