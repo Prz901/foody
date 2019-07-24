@@ -48,6 +48,9 @@ Route.on('/createcategory').render('createcategory');
 
 Route.post("/product", "ProductController.store");
 
+//Category Product
+Route.get("/category/:id/product", "CategoryProductController.index");
+
 //Product routes
 Route.group(() => {
   Route.resource("product", "ProductController");
@@ -59,5 +62,5 @@ Route.get('/createproduct', 'CategoryController.list');
 //Route.on('/createproduct').render('createproduct');
 
 //Cart
-Route.post("/product/:id/cart", "CartController.addOn");
+Route.get("/product/:id/cart", "CartController.addOn").middleware("auth");
 Route.get("/cart", "CartController.list");
