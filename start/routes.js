@@ -44,6 +44,7 @@ Route.get("/category/:id/delete", "CategoryController.destroy");
 Route.get("/editcategory/:id", "CategoryController.show");
 Route.get("/category", "CategoryController.index");
 Route.post("/category", "CategoryController.store");
+Route.on("/createcategory").render("createcategory");
 
 Route.post("/product", "ProductController.store");
 

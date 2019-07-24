@@ -6,7 +6,7 @@ class CartController {
   async addOn({ request, response, params, auth }) {}
 
   async list({ request, response, view, data }) {
-    //return view.render("cart", { data });
+    return view.render("cart", { data });
   }
 }
 

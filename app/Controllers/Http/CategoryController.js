@@ -10,12 +10,12 @@ class CategoryController {
     return view.render("category", { categories });
   }
 
-  async store({ request, response, auth }) {
+  async store({ request, response, auth, view }) {
     if (auth.user && auth.user.type == "admin") {
       const data = await request.only(["category_name"]);
       data.id_users = auth.user.id;
       const category = await Category.create(data);
-      return response.status(200).send("Categoria cadastrada", category);
+      return response.redirect("/category");
     }
   }
 
@@ -39,7 +39,8 @@ class CategoryController {
     if (auth.user && auth.user.type == "admin") {
       const data = await Category.findOrFail(params.id);
       await data.delete();
-      return response.status(200).send("Categoria deletada com sucesso");
+     // return response.status(200).send("Categoria deletada com sucesso");
+      return response.redirect("/category");
     }
   }
 }

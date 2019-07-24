@@ -1,5 +1,3 @@
-
-
 @layout('LogedTemplate')
 @section('navbar-admin')
     <nav class="navbar navbar-expand-lg" class="menu">
@@ -35,14 +33,14 @@
                     </td>
                     <td>
                         <a class="btn btn-outline-info btn-sm" type="submit" href="/editcategory/{{category.id}}">Edit</a>
-                        <a class="btn btn-outline-dark btn-sm" href="">Deletar</a>
+                        <a class="btn btn-outline-dark btn-sm" type="submit" href="/category/{{category.id}}/delete">Deletar</a>
                     </td>
             </tr>
             
         @endeach
     </tbody>
     
-<p>Para adicionar uma nova categoria <a href="#" class="btn btn-outline-success btn-sm">+</a></p> 
+<p>Para adicionar uma nova categoria <a href="/createcategory" class="btn btn-outline-success btn-sm">+</a></p> 
     </thead>
 </div>
 
