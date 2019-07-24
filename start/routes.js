@@ -45,6 +45,9 @@ Route.group(() => {
 
 Route.post("/product", "ProductController.store");
 
+//Category Product
+Route.get("/category/:id/product", "CategoryProductController.index");
+
 //Product routes
 Route.group(() => {
   Route.resource("product", "ProductController");
