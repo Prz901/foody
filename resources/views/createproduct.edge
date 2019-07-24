@@ -5,10 +5,9 @@
         <a href="/logout" class="logoutButton" role="button" aria-pressed="true">Logout</a>
     </nav>
 @endsection
-@section('form-edit')
-
-<form action="/product/{{product.id}}/update" method="post" class="register-box">
-    <h3>Edite as seguintes informações:</h3>
+@section('form-create')
+<form action="/product" method="post" class="register-box">
+    <h3>Insira as seguintes informações:</h3>
     <label class="col-form-label-lg">Nome produto: </label><input class="form-control" type="text" name="product_name"></input><br></br>
     <label class="col-form-label-lg">Preço: </label><input class="form-control" name="price"></input><br></br>
     <label class="col-form-label-lg">Categoria: </label><select class="custom-select" id="inputGroupSelect01">

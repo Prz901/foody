@@ -44,7 +44,7 @@ Route.get('/category/:id/delete', 'CategoryController.destroy');
 Route.get('/editcategory/:id', 'CategoryController.show');
 Route.get('/category', 'CategoryController.index');
 Route.post('/category', 'CategoryController.store');
-Route.on('/createcategory').render('createcategory')
+Route.on('/createcategory').render('createcategory');
 
 Route.post("/product", "ProductController.store");
 
@@ -52,6 +52,11 @@ Route.post("/product", "ProductController.store");
 Route.group(() => {
   Route.resource("product", "ProductController");
 }).middleware("auth");
+Route.post('/product/:id/update', 'ProductController.update');
+Route.get('/editproduct/:id', 'ProductController.show');
+Route.get('/product/:id/delete', 'ProductController.destroy');
+Route.get('/createproduct', 'CategoryController.list');
+//Route.on('/createproduct').render('createproduct');
 
 //Cart
 Route.post("/product/:id/cart", "CartController.addOn");

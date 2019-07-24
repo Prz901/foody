@@ -32,6 +32,12 @@ class ProductController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
+
+  async show({ response, params, auth, view}) {
+    const product = await Product.findByOrFail('id', params.id);
+    return view.render("editproduct", { product });
+  }
+
   async store({ request, response, auth }) {
     if (auth.user && auth.user.type == "admin") {
       const data = await request.only([
@@ -39,10 +45,11 @@ class ProductController {
         "price",
         "id_categories"
       ]);
-      console.log("deu certo");
+      console.log(data)
       data.id_users = auth.user.id;
+      console.log(data)
       const product = await Product.create(data);
-      return response.status(200).send(product);
+      return response.redirect("/product");
     }
   }
   /**

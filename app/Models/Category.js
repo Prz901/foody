@@ -9,7 +9,7 @@ class Category extends Model {
     }
 
     product () {
-        return this.hasMany('App/Models/Product', 'id', 'id_category');
+        return this.hasMany('App/Models/Product', 'id', 'id_categories');
     }
 
 }
