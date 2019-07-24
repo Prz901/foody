@@ -39,14 +39,17 @@ Route.get("/admin", "AdminController.home").middleware("auth");
 Route.get("/client", "ClientController.home").middleware("auth");
 
 //Category routes
-Route.post('/category/:id/update', 'CategoryController.update');
-Route.get('/category/:id/delete', 'CategoryController.destroy');
-Route.get('/editcategory/:id', 'CategoryController.show');
-Route.get('/category', 'CategoryController.index');
-Route.post('/category', 'CategoryController.store');
-Route.on('/createcategory').render('createcategory')
+Route.post("/category/:id/update", "CategoryController.update");
+Route.get("/category/:id/delete", "CategoryController.destroy");
+Route.get("/editcategory/:id", "CategoryController.show");
+Route.get("/category", "CategoryController.index");
+Route.post("/category", "CategoryController.store");
+Route.on("/createcategory").render("createcategory");
 
 Route.post("/product", "ProductController.store");
+
+//Category Product
+Route.get("/category/:id/product", "CategoryProductController.index");
 
 //Product routes
 Route.group(() => {
@@ -54,5 +57,5 @@ Route.group(() => {
 }).middleware("auth");
 
 //Cart
-Route.post("/product/:id/cart", "CartController.addOn");
+Route.get("/product/:id/cart", "CartController.addOn").middleware("auth");
 Route.get("/cart", "CartController.list");
