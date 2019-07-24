@@ -39,7 +39,8 @@ class CategoryController {
     if (auth.user && auth.user.type == "admin") {
       const data = await Category.findOrFail(params.id);
       await data.delete();
-      return response.status(200).send("Categoria deletada com sucesso");
+     // return response.status(200).send("Categoria deletada com sucesso");
+      return response.redirect("/category");
     }
   }
 }

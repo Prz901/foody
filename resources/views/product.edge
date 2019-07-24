@@ -19,7 +19,6 @@
       </tr>
     </thead>
     <form action="/product" method="post">
-    <tbody>
       <tr>
         @each(product in products.toJSON())
             <tr> 
@@ -36,7 +35,7 @@
                         {{ product.id_categories }}
                     </td>
                     <td>
-                        <a class="btn btn-outline-info btn-sm" href="">Editar</a>
+                        <a class="btn btn-outline-info btn-sm" href="/editproduct/{{product.id}}">Editar</a>
                         <a class="btn btn-outline-dark btn-sm" href="">Deletar</a>
                     </td>
             </tr>
