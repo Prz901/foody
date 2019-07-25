@@ -44,6 +44,15 @@ class ProductController {
     return view.render("editproduct", { product });
   }
 
+  async edit({ request, response, params, view }){
+    const product = await Product.findByOrFail("id", params.id)
+
+    const categories = await Category.all();
+
+    return view.render("editproduct", { product, categories });
+    
+  }
+
   async store({ request, response, auth }) {
     if (auth.user && auth.user.type == "admin") {
       const data = await request.only([
@@ -73,7 +82,7 @@ class ProductController {
       const product = await Product.findBy("id", id);
       product.merge(data);
       await product.save();
-      return response.send(product);
+      return response.redirect("/product");
     }
   }
   /**
@@ -88,7 +97,7 @@ class ProductController {
     if (auth.user && auth.user.type == "admin") {
       const data = await Product.findOrFail(params.id);
       await data.delete();
-      return response.status(200).send("Produto deletado com sucesso");
+      return response.redirect("/product");
     }
   }
 }

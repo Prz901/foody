@@ -55,8 +55,9 @@ Route.get("/category/:id/product", "CategoryProductController.index");
 Route.group(() => {
   Route.resource("product", "ProductController");
 }).middleware("auth");
+Route.get("/product", "ProductController.index");
 Route.post("/product/:id/update", "ProductController.update");
-Route.get("/editproduct/:id", "ProductController.show");
+Route.get("/editproduct/:id", "ProductController.edit");
 Route.get("/product/:id/delete", "ProductController.destroy");
 Route.get("/createproduct", "ProductController.create");
 //Route.on('/createproduct').render('createproduct');

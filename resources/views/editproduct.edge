@@ -14,8 +14,8 @@
     <label class="col-form-label-lg">Categoria: </label><select class="custom-select" id="inputGroupSelect01">
         <option>Escolha uma categoria...</option>
         @each(category in categories.toJSON())
-        <option value="{{category.id}}" name="id_categories">{{category.id}}</option>
-   ''     @endeach
+        <option value="{{category.id}}" name="id_categories">{{category.category_name}}</option>
+        @endeach
     </select><br></br>
     <input type="submit" class="btn btn-outline-danger btn-sm" value="Salvar"></input>
 </form>
