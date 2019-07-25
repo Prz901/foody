@@ -10,12 +10,6 @@ class CategoryController {
     return view.render("category", { categories });
   }
 
-  async list({ response, view }) {
-    const categories = await Category.all();
-    //return response.status(200).send(categories);
-    return view.render("createproduct", { categories });
-  }
-
   async store({ request, response, auth, view }) {
     if (auth.user && auth.user.type == "admin") {
       const data = await request.only(["category_name"]);
@@ -36,8 +30,8 @@ class CategoryController {
     }
   }
 
-  async show({ response, params, auth, view}) {
-    const category = await Category.findByOrFail('id', params.id);
+  async show({ response, params, auth, view }) {
+    const category = await Category.findByOrFail("id", params.id);
     return view.render("editcategory", { category });
   }
 
@@ -45,7 +39,7 @@ class CategoryController {
     if (auth.user && auth.user.type == "admin") {
       const data = await Category.findOrFail(params.id);
       await data.delete();
-     // return response.status(200).send("Categoria deletada com sucesso");
+      // return response.status(200).send("Categoria deletada com sucesso");
       return response.redirect("/category");
     }
   }

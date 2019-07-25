@@ -5,6 +5,7 @@
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
 const Product = use("App/Models/Product");
+const Category = use("App/Models/Category");
 
 /**
  * Resourceful controller for interacting with products
@@ -33,8 +34,13 @@ class ProductController {
    * @param {Response} ctx.response
    */
 
-  async show({ response, params, auth, view}) {
-    const product = await Product.findByOrFail('id', params.id);
+  async create({ request, response, view }) {
+    const categories = await Category.all();
+    return view.render("createproduct", { categories });
+  }
+
+  async show({ response, params, auth, view }) {
+    const product = await Product.findByOrFail("id", params.id);
     return view.render("editproduct", { product });
   }
 
@@ -45,9 +51,9 @@ class ProductController {
         "price",
         "id_categories"
       ]);
-      console.log(data)
+      console.log(data);
       data.id_users = auth.user.id;
-      console.log(data)
+      console.log(data);
       const product = await Product.create(data);
       return response.redirect("/product");
     }
