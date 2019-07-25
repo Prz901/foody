@@ -8,14 +8,17 @@
 @section('form-create')
 <form action="/product" method="post" class="register-box">
     <h3>Insira as seguintes informações:</h3>
-    <label class="col-form-label-lg">Nome produto: </label><input class="form-control" type="text" name="product_name"></input><br></br>
-    <label class="col-form-label-lg">Preço: </label><input class="form-control" name="price"></input><br></br>
-    <label class="col-form-label-lg">Categoria: </label><select class="custom-select" id="inputGroupSelect01">
+    <label class="col-form-label-lg">Nome produto: </label>
+    <input class="form-control" type="text" name="product_name"></input>
+    <label class="col-form-label-lg">Preço: </label>
+    <input class="form-control" name="price"></input>
+    <label class="col-form-label-lg">Categoria: </label>
+    <select  name="id_categories" class="custom-select mb-4" id="inputGroupSelect01">
         <option>Escolha uma categoria...</option>
         @each(category in categories.toJSON())
-        <option value="{{category.id}}" name="id_categories">{{category.category_name}}</option>
+        <option value="{{category.id}}">{{category.category_name}}</option>
         @endeach
-    </select><br></br>
+    </select>
     <input type="submit" class="btn btn-outline-danger btn-sm" value="Salvar"></input>
 </form>
 @endsection
