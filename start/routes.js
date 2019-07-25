@@ -39,12 +39,12 @@ Route.get("/admin", "AdminController.home").middleware("auth");
 Route.get("/client", "ClientController.home").middleware("auth");
 
 //Category routes
-Route.post('/category/:id/update', 'CategoryController.update');
-Route.get('/category/:id/delete', 'CategoryController.destroy');
-Route.get('/editcategory/:id', 'CategoryController.show');
-Route.get('/category', 'CategoryController.index');
-Route.post('/category', 'CategoryController.store');
-Route.on('/createcategory').render('createcategory');
+Route.post("/category/:id/update", "CategoryController.update");
+Route.get("/category/:id/delete", "CategoryController.destroy");
+Route.get("/editcategory/:id", "CategoryController.show");
+Route.get("/category", "CategoryController.index");
+Route.post("/category", "CategoryController.store");
+Route.on("/createcategory").render("createcategory");
 
 Route.post("/product", "ProductController.store");
 
@@ -55,10 +55,10 @@ Route.get("/category/:id/product", "CategoryProductController.index");
 Route.group(() => {
   Route.resource("product", "ProductController");
 }).middleware("auth");
-Route.post('/product/:id/update', 'ProductController.update');
-Route.get('/editproduct/:id', 'ProductController.show');
-Route.get('/product/:id/delete', 'ProductController.destroy');
-Route.get('/createproduct', 'CategoryController.list');
+Route.post("/product/:id/update", "ProductController.update");
+Route.get("/editproduct/:id", "ProductController.show");
+Route.get("/product/:id/delete", "ProductController.destroy");
+Route.get("/createproduct", "ProductController.create");
 //Route.on('/createproduct').render('createproduct');
 
 //Cart
