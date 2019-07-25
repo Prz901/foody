@@ -97,7 +97,7 @@ class ProductController {
     if (auth.user && auth.user.type == "admin") {
       const data = await Product.findOrFail(params.id);
       await data.delete();
-      return response.status(200).send("Produto deletado com sucesso");
+      return response.redirect("/product");
     }
   }
 }
