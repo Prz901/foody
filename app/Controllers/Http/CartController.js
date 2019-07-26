@@ -1,22 +1,30 @@
 "use strict";
 
 const Product = use("App/Models/Product");
+const Order = use("App/Models/Order");
 
 class CartController {
-    async addOn({ request, response, auth, session, params }) {
+    async create({ request, response, auth, session, params }) {
         const quantidade = 1;
         if (auth.user && auth.user.type == "client") {
             const itensCart = session.get("itensCart") || [];
             const product = await Product.findBy("id", params.id);
-            itensCart.push({ product, quantidade });
+            itensCart.push({ product: product, quantidade });
             session.put("itensCart", itensCart);
-            response.send(itensCart);
+            console.log(itensCart);
         }
     }
 
-    async list({ request, response, view, data }) {
-        return view.render("cart", { data });
+    async index({ request, response, view, session }) {
+        const datas = await session.all();
+        return view.render("cart", { datas });
     }
+
+    async store({}) {}
+
+    async edit({}) {}
+
+    async destroy({}) {}
 }
 
 module.exports = CartController;

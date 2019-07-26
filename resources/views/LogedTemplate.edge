@@ -22,5 +22,25 @@
     @endsection
     @section('form-create')
     @endsection
-    </body>
+    
+    <script>
+    // let quantidade = parseInt($('.total').val());
+    function button(type, quantidade){
+        if(type ==='add'){
+            quantidade+=1
+        }
+        if(type ==='remove'){
+            quantidade-=1
+        }
+        $('.total').val(quantidade)
+    }
+    
+    $('.add').click(function() {
+        button('add')
+    })
+    $('.remove').click(function() {
+        button('remove')
+    })
+    </script>
+</body>
 </html>
