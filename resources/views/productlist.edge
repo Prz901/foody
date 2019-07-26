@@ -11,20 +11,22 @@
 <table class="table  table-bordered  table-hover">
 <thead>
   <tr>
-    <th scope="col">Product</th>
-    <th scope="col">Price</th>
-    <th scope="col">Category</th>
-    <th scope="col">Comprar</th>
+    <th scope="col">Produto</th>
+    <th scope="col">Preço</th>
+    <th scope="col">Categoria</th>
+    <th scope="col">Salvar</th>
   </tr>
 </thead>
 <tbody>
 @each(product in products.toJSON())
-  <tr>
+<form action="/product/{{product.id}}/cart" method="POST">
+<tr id="produto_{{product.id}}">
     <td>{{product.product_name}}</td>
     <td>{{product.price}}</td>
     <td>{{product.id_categories}}</td>
-  <td><a href="/product/{{product.id}}/cart" class="btn btn-outline-success btn-sm">+</a></td>
+    <td><button  type="submit">Salvar</button></td>
   </tr>
+</form>
 @endeach
 </tbody>
 </table>
