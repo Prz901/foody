@@ -1,9 +1,10 @@
 "use strict";
 
 const Product = use("App/Models/Product");
+const Order = use('App/Models/Order');
 
 class CartController {
-    async addOn({ request, response, auth, session, params }) {
+    async create({ request, response, auth, session, params }) {
         const quantidade = 1;
         if (auth.user && auth.user.type == "client") {
             const itensCart = session.get("itensCart") || [];
@@ -14,8 +15,15 @@ class CartController {
         }
     }
 
-    async list({ request, response, view, data }) {
+    async index({ request, response, view, data }) {
+        const data = session.all();
         return view.render("cart", { data });
+    }
+
+    async store({request, response }){
+        if (auth.user && auth.user.type == "client") {
+            
+        }
     }
 }
 
