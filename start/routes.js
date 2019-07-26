@@ -53,7 +53,7 @@ Route.get("/category/:id/product", "CategoryProductController.index");
 
 //Product routes
 Route.group(() => {
-  Route.resource("product", "ProductController");
+    Route.resource("product", "ProductController");
 }).middleware("auth");
 Route.get("/product", "ProductController.index");
 Route.post("/product/:id/update", "ProductController.update");
@@ -63,5 +63,6 @@ Route.get("/createproduct", "ProductController.create");
 //Route.on('/createproduct').render('createproduct');
 
 //Cart
-Route.get("/product/:id/cart", "CartController.create").middleware("auth");
+Route.get("/product/:id/cart", "CartController.index").middleware("auth");
+Route.post("/product/:id/cart", "CartController.create").middleware("auth");
 Route.get("/cart", "CartController.index");
