@@ -9,9 +9,16 @@ class CartController {
         if (auth.user && auth.user.type == "client") {
             const itensCart = session.get("itensCart") || [];
             const product = await Product.findBy("id", params.id);
-            itensCart.push({ product: product, quantidade });
+            const productIndex = itensCart.findIndex(
+                item => item.product.id === product.id
+            );
+            if (productIndex > -1) {
+                itensCart[productIndex].quantidade += quantidade;
+            } else {
+                itensCart.push({ product: product, quantidade });
+            }
+
             session.put("itensCart", itensCart);
-            console.log(itensCart);
         }
     }
 
@@ -24,7 +31,18 @@ class CartController {
     async store({}) {}
 
     // remover um produto do carrinho
-    async update({}) {}
+    async update({ request, response, auth, session, params }) {
+        if (auth.user && auth.user.type == "client") {
+            let array = session.get("itensCart");
+            const product = await Product.findByOrFail("id", params.id);
+
+            array = array.filter(item => {
+                item.product.id !== params.id;
+            });
+            session.put("itensCart", array);
+            return response.redirect("/cart");
+        }
+    }
 
     //remover tudo do carrinho
     async destroy({ request, response, auth, session }) {
