@@ -20,10 +20,13 @@ class CartController {
         return view.render("cart", { datas });
     }
 
+    //adicionar no banco de pedidos
     async store({}) {}
 
+    // remover um produto do carrinho
     async edit({}) {}
 
+    //remover tudo do carrinho
     async destroy({}) {}
 }
 
