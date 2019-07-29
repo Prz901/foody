@@ -24,10 +24,15 @@ class CartController {
     async store({}) {}
 
     // remover um produto do carrinho
-    async edit({}) {}
+    async update({}) {}
 
     //remover tudo do carrinho
-    async destroy({}) {}
+    async destroy({ request, response, auth, session }) {
+        if (auth.user && auth.user.type == "client") {
+            session.put("itensCart", []);
+        }
+        return response.redirect("/cart");
+    }
 }
 
 module.exports = CartController;
