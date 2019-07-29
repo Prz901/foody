@@ -76,3 +76,5 @@ Route.get("/cart/clear", "CartController.destroy").middleware("auth");
 Route.get("/order", "OrderController.index");
 Route.get('/order/:id', "OrderController.show");
 
+
+Route.get("/cart/:id/update", "CartController.update").middleware("auth");
