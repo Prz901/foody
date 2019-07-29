@@ -65,4 +65,6 @@ Route.get("/createproduct", "ProductController.create");
 //Cart
 Route.get("/product/:id/cart", "CartController.index").middleware("auth");
 Route.post("/product/:id/cart", "CartController.create").middleware("auth");
+Route.post("/product/:data/cart", "CartController.store").middleware("auth");
 Route.get("/cart", "CartController.index");
+Route.post("/cart", "CartController.store").middleware("auth");

@@ -5,7 +5,7 @@ const Schema = use('Schema');
 
 class OrderSchema extends Schema {
   up () {
-    this.create('orders', (table) => {
+    this.alter('users', (table) => {
       table.increments();
       table.date('date').notNullable();
       table.float('price').notNullable();
