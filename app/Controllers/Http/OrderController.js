@@ -12,6 +12,19 @@ class OrderController {
             return view.render("order", { orders });
         }
     }
+
+    async show({request, response, params, view}){
+        const order = await Order.findByOrFail("id", params.id);
+        return view.render("order", { order });
+    }
+
+    async destroy({ response, params, auth }) {
+        if (auth.user && auth.user.type == "admin") {
+          const data = await Order.findOrFail(params.id);
+          await data.delete();
+          return response.redirect("/order");
+        }
+      }
 }
 
 module.exports = OrderController

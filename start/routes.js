@@ -68,3 +68,11 @@ Route.post("/product/:id/cart", "CartController.create").middleware("auth");
 Route.post("/product/:data/cart", "CartController.store").middleware("auth");
 Route.get("/cart", "CartController.index");
 Route.post("/cart", "CartController.store").middleware("auth");
+
+Route.get("/cart", "CartController.index");
+Route.get("/cart/clear", "CartController.destroy").middleware("auth");
+
+//Order
+Route.get("/order", "OrderController.index");
+Route.get('/order/:id', "OrderController.show");
+

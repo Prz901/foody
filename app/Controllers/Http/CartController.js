@@ -20,22 +20,37 @@ class CartController {
         return view.render("cart", { datas });
     }
 
-    async store({request, response, auth, view}) {
+    async store({request, response, auth, view, session}) {
         if (auth.user && auth.user.type == "client") {
-            const data = await request.only(["id_products","price","quantity"]);
+            const data = await session.get("itensCart");
             //console.log(data);
             data.id_users = auth.user.id;
-           // console.log(data);
-            const order = await Order.create(data);
-            console.log(order);
-          }
-       
+            data.quantity = await request.only(["quantity"]);
+            //console.log(data);
+            for(var i = 0; i < data.length; i++){
+                console.log(data.product);
+                /*const order = [];
+                order['id_products'] = data.id_products;
+                order['price'] = data.price;
+                order['quantity'] = data.quantity;
+                console.log(order);
+//                await Order.create(order);*/
+              
+                console.log("Armazenado");
+            }
+            
+            //console.log(order);
+          }  
     }
 
-    async destroy({}) {
-        const itensCart = session.get("itensCart") || [];
-        session.put("itensCart", itensCart);
-        return response.redirect("/cart");
+    async update({}) {}
+
+    //remover tudo do carrinho
+    async destroy({ request, response, auth, session }) {
+        if (auth.user && auth.user.type == "client") {
+            session.put("itensCart", []);
+            return response.redirect("/cart");
+        }
     }
 }
 
