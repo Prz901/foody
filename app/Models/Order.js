@@ -13,7 +13,7 @@ class Order extends Model {
     }
 
     products () {
-        return this.belongsToMany('App/Models/Product', 'id_order', 'id_product', 'id', 'id')
+        return this.belongsToMany('App/Models/Product', 'order_id', 'product_id', 'id', 'id')
     }
 }
 

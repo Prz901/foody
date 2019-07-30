@@ -15,8 +15,8 @@ class Product extends Model {
   orders() {
     return this.belongsToMany(
       "App/Models/Order",
-      "id_order",
-      "id_product",
+      "order_id",
+      "product_id",
       "id",
       "id"
     );

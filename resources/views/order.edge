@@ -11,15 +11,14 @@
 <form action="/order" method="post">
 <thead>
   <tr>
-    <th scope="col">Produto</th>
+    <th scope="col">Id Produto</th>
     <th scope="col">Preço</th>
-    <th scope="col">Categoria</th>
     <th scope="col" width='300'>Quantidade</th>
     <th scope="col" width='300'>Remover</th>
   </tr>
 </thead>
 <tbody>
-@each(order in orders.toJSON())
+@each(order in ord.toJSON())
   <tr>  
     <td>
       <div class="input-group mb-3">
