@@ -5,7 +5,7 @@ const Order = use("App/Models/Order");
 
 class CartController {
     async create({ request, response, auth, session, params }) {
-        const quantity = 1;
+        const quantidade = 1;
         if (auth.user && auth.user.type == "client") {
             const itensCart = session.get("itensCart") || [];
             const product = await Product.findBy("id", params.id);
@@ -28,23 +28,11 @@ class CartController {
         return view.render("cart", { datas });
     }
 
-    async store({request, response, auth, view, session}) {
+    async store({ request, response, auth, view, session }) {
         if (auth.user && auth.user.type == "client") {
             const products = [];
             const data = await session.get("itensCart");
-
-            data.forEach(async (item) => {
-                products.push(item.product.id);
-            })
-
-            const order = await Order.create({id_users: auth.user.id, price: 15});
-            await order.products().count()
-
-
-            // return view.render("order", { orders });
-        }
-    }  
-    
+r
 
     // remover um produto do carrinho
     async update({ request, response, auth, session, params }) {

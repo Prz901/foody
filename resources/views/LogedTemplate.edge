@@ -23,24 +23,33 @@
     @section('form-create')
     @endsection
     
+
     <script>
-    // let quantidade = parseInt($('.total').val());
-    function button(type, quantidade){
+
+    $('[data-product]').each( (index,item)=>{
+        const button = $('#'+$(item).attr('id'));
+        button.find('.add').click(function() {
+            buttonCart(button, 'add', parseInt(button.find('.total').val()))
+        })
+        button.find('.remove').click(function() {
+            buttonCart(button, 'remove', parseInt(button.find('.total').val()))
+        })
+    }) 
+    function buttonCart(ref, type, quantidade){
         if(type ==='add'){
-            quantidade+=1
+            if(quantidade < 20){
+                quantidade+=1
+            }
         }
         if(type ==='remove'){
-            quantidade-=1
+            if(quantidade > 1){
+                quantidade-=1
+            }
         }
-        $('.total').val(quantidade)
+        ref.find('.total').val(quantidade)
     }
     
-    $('.add').click(function() {
-        button('add')
-    })
-    $('.remove').click(function() {
-        button('remove')
-    })
+  
     </script>
 </body>
 </html>
