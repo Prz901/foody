@@ -20,29 +20,28 @@
 </thead>
 <tbody>
 @each(data in datas.itensCart)
-  <tr>  
+  <tr data-product="{{data.product.id}}" id="product_{{data.product.id}}">  
     <td>
       <div class="input-group mb-3">
-        <input name="id_products" value="{{data.product.id}}"></input>
+        <input name="id_products" value="{{data.product.product_name}}" readonly />
       </div>
     </td>
     <td>
       <div class="input-group mb-3">
-     <input name="product_name" value="{{data.product.product_name}}"></input>
+          <input name="price" value="{{data.product.price}}" readonly/>
       </div>
     </td>
     <td>
       <div class="input-group mb-3">
-        <input name="price" value="{{data.product.price}}"></input>
+     <input name="product_name" value="{{data.product.id_categories}}" readonly />
       </div>
     </td>
-    <td>{{data.product.id_categories}}</td>
     <td>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <button class="btn btn-outline-secondary remove" type="button" id="button-addon1">-</button>
           </div>
-        <input type="number" min="1" max="10" value="{{data.quantity}}" class="form-control total" name="quantity" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+        <input type="number" min="1" max="10" value="{{data.quantidade}}" class="form-control total" name="quantity" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
           <div class="input-group-append">
             <button class="btn btn-outline-secondary add" type="button" id="button-addon2">+</button>
           </div>
@@ -52,7 +51,7 @@
   </tr>
 @endeach
 </tbody>
-<input type="submit" class="btn btn-success" value="Finalizar carrinho"></input>
+<input type="submit" class="btn btn-success buttonCart" value="Finalizar carrinho"></input>
 
 <a href="/cart/clear" class="btn btn-danger buttonCart ">Limpar carrinho</a>
 </form>
