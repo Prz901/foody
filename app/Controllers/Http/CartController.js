@@ -55,9 +55,8 @@ class CartController {
         if (auth.user && auth.user.type == "client") {
             let array = session.get("itensCart");
             const product = await Product.findByOrFail("id", params.id);
-
             array = array.filter(item => {
-                item.product.id !== params.id;
+                return item.product.id != params.id;
             });
             session.put("itensCart", array);
             return response.redirect("/cart");
