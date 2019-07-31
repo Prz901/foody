@@ -30,7 +30,16 @@ class CartController {
 
     async store({request, response, auth, view, session}) {
         if (auth.user && auth.user.type == "client") {
-            const products = [];
+           const data = session.get("itensCart");
+           data.quantity = await request.only(["quantity"]);
+           data.forEach((item) => {
+                let orders = {};
+                orders.id_products = item.product.id_products;
+                orders.price = item.product.price;
+                orders.id_users = auth.user.id;
+                orders.quantity = item.quantity;
+           });
+         /*   const products = [];
             const data = await session.get("itensCart");
 
             data.forEach(async (item) => {
@@ -38,10 +47,11 @@ class CartController {
             })
 
             const order = await Order.create({id_users: auth.user.id, price: 15});
-            await order.products().count()
+            await order.products().count();*/
 
 
             // return view.render("order", { orders });
+            return response.redirect("/order");
         }
     }  
     

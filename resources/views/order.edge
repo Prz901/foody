@@ -18,11 +18,11 @@
   </tr>
 </thead>
 <tbody>
-@each(order in ord.toJSON())
+@each(order in orders.toJSON())
   <tr>  
     <td>
       <div class="input-group mb-3">
-        <input name="id_products" value="{{data.product.id}}"></input>
+        <input name="id_products" value="{{order.id_products}}"></input>
       </div>
     </td>
     <td>

@@ -9,7 +9,7 @@ class OrderController {
                                 .table('orders')
                                 .where('id_users', auth.user.id)
                                 .first();*/
-            //const orders = await Order.findByOrFail("id", params.id);
+            const orders = await Order.all();
             return view.render("order", { orders });
         }
     }
