@@ -26,10 +26,10 @@ Route.post("/token", "AuthController.getToken");
 
 //User
 Route.post("/register", "UserController.store");
-Route.get("/user", "UserController.index");
+Route.get("/users", "UserController.index");
 Route.post("/login", "AuthController.authenticate");
 Route.put("/user/:id", "UserController.update");
-Route.delete("/user/:id", "UserController.destroy");
+Route.get("/user/:id", "UserController.destroy");
 Route.get("/logout", "UserController.logout");
 
 //Admin Home
@@ -77,3 +77,4 @@ Route.get("/cart/:id/update", "CartController.update").middleware("auth");
 Route.get("/order", "OrderController.index");
 Route.get('/order/:id', "OrderController.show");
 
+Route.get("/cart/:id/update", "CartController.update").middleware("auth");
