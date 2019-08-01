@@ -28,16 +28,20 @@ class CartController {
         return view.render("cart", { datas });
     }
 
-    async store({request, response, auth, view, session}) {
+    async store({ request, response, auth, view, session }) {
         if (auth.user && auth.user.type == "client") {
            const data = session.get("itensCart");
            data.quantity = await request.only(["quantity"]);
-           data.forEach((item) => {
+           console.log(data)
+           data.forEach(async (item) => {
+               //console.log(item);
                 let orders = {};
                 orders.id_products = item.product.id_products;
                 orders.price = item.product.price;
                 orders.id_users = auth.user.id;
                 orders.quantity = item.quantity;
+               // console.log(orders);
+                await Order.create(orders);
            });
          /*   const products = [];
             const data = await session.get("itensCart");

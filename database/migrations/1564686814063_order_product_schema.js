@@ -1,7 +1,7 @@
 'use strict'
 
 /** @type {import('@adonisjs/lucid/src/Schema')} */
-const Schema = use('Schema');
+const Schema = use('Schema')
 
 class OrderProductSchema extends Schema {
   up () {
@@ -21,13 +21,27 @@ class OrderProductSchema extends Schema {
         .references('id')
         .inTable('products')
         .onDelete('CASCADE');
+      table
+        .integer('id_users')
+        .unsigned()
+        .notNullable()
+        .references('id')
+        .inTable('users');
+      table
+        .string('product_name');
+      table
+        .float('price');
+      table 
+        .string('quantity');
+      table
+        .string('image');
       table.timestamps();
     })
   }
 
   down () {
-    this.drop('order_products');
+    this.drop('order_products')
   }
 }
 
-module.exports = OrderProductSchema;
+module.exports = OrderProductSchema
