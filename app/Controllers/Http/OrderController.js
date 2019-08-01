@@ -3,12 +3,13 @@
 const Order = use('App/Models/Order');
 
 class OrderController {
-    async index({ auth, view }){
+    async index({ auth, view, params }){
         if (auth.user && auth.user.type == "client") {
-            const orders = await Order
-                                .table('order')
+            /*const orders = await Order
+                                .table('orders')
                                 .where('id_users', auth.user.id)
-                                .first();
+                                .first();*/
+            const orders = await Order.all();
             return view.render("order", { orders });
         }
     }
@@ -19,7 +20,7 @@ class OrderController {
     }
 
     async destroy({ response, params, auth }) {
-        if (auth.user && auth.user.type == "admin") {
+        if (auth.user && auth.user.type == "client") {
           const data = await Order.findOrFail(params.id);
           await data.delete();
           return response.redirect("/order");

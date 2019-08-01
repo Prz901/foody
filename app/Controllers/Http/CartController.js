@@ -9,6 +9,7 @@ class CartController {
         if (auth.user && auth.user.type == "client") {
             const itensCart = session.get("itensCart") || [];
             const product = await Product.findBy("id", params.id);
+            product.id_users = auth.user.id;
             const productIndex = itensCart.findIndex(
                 item => item.product.id === product.id
             );
@@ -29,15 +30,35 @@ class CartController {
 
     async store({ request, response, auth, view, session }) {
         if (auth.user && auth.user.type == "client") {
+           const data = session.get("itensCart");
+           data.quantity = await request.only(["quantity"]);
+           console.log(data)
+           data.forEach(async (item) => {
+               //console.log(item);
+                let orders = {};
+                orders.id_products = item.product.id_products;
+                orders.price = item.product.price;
+                orders.id_users = auth.user.id;
+                orders.quantity = item.quantity;
+               // console.log(orders);
+                await Order.create(orders);
+           });
+         /*   const products = [];
             const data = await session.get("itensCart");
-            //console.log(data);
-            data.id_users = auth.user.id;
-            data.quantity = await request.only(["quantity"]);
-            //console.log(data);
 
-            console.log("Armazenado");
+            data.forEach(async (item) => {
+                products.push(item.product.id);
+            })
+
+            const order = await Order.create({id_users: auth.user.id, price: 15});
+            await order.products().count();*/
+
+
+            // return view.render("order", { orders });
+            return response.redirect("/order");
         }
-    }
+    }  
+    
 
     // remover um produto do carrinho
     async update({ request, response, auth, session, params }) {

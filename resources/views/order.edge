@@ -11,9 +11,8 @@
 <form action="/order" method="post">
 <thead>
   <tr>
-    <th scope="col">Produto</th>
+    <th scope="col">Id Produto</th>
     <th scope="col">Preço</th>
-    <th scope="col">Categoria</th>
     <th scope="col" width='300'>Quantidade</th>
     <th scope="col" width='300'>Remover</th>
   </tr>
@@ -23,7 +22,7 @@
   <tr>  
     <td>
       <div class="input-group mb-3">
-        <input name="id_products" value="{{data.product.id}}"></input>
+        <input value="{{order.id_products}}"></input>
       </div>
     </td>
     <td>
