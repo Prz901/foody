@@ -11,6 +11,7 @@
 <table class="table  table-bordered  table-hover">
 <thead>
   <tr>
+    <th scope="col">#</th>
     <th scope="col">Produto</th>
     <th scope="col">Preço</th>
     <th scope="col">Categoria</th>
@@ -21,6 +22,7 @@
 @each(product in products.toJSON())
 <form action="/product/{{product.id}}/cart" method="POST">
 <tr id="produto_{{product.id}}">
+  <td></td>
     <td>{{product.product_name}}</td>
     <td>{{product.price}}</td>
     <td>{{product.id_categories}}</td>
