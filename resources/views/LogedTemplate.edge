@@ -35,18 +35,18 @@
             buttonCart(button, 'remove', parseInt(button.find('.total').val()))
         })
     }) 
-    function buttonCart(ref, type, quantidade){
+    function buttonCart(ref, type, quantity){
         if(type ==='add'){
-            if(quantidade < 20){
-                quantidade+=1
+            if(quantity < 20){
+                quantity+=1
             }
         }
         if(type ==='remove'){
-            if(quantidade > 1){
-                quantidade-=1
+            if(quantity > 1){
+                quantity-=1
             }
         }
-        ref.find('.total').val(quantidade)
+        ref.find('.total').val(quantity)
     }
     
   
