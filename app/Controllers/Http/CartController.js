@@ -5,7 +5,7 @@ const Order = use("App/Models/Order");
 
 class CartController {
     async create({ request, response, auth, session, params }) {
-        const quantidade = 1;
+        const quantity = 1;
         if (auth.user && auth.user.type == "client") {
             const itensCart = session.get("itensCart") || [];
             const product = await Product.findBy("id", params.id);
@@ -13,9 +13,9 @@ class CartController {
                 item => item.product.id === product.id
             );
             if (productIndex > -1) {
-                itensCart[productIndex].quantidade += quantidade;
+                itensCart[productIndex].quantity += quantity;
             } else {
-                itensCart.push({ product: product, quantidade });
+                itensCart.push({ product: product, quantity });
             }
 
             session.put("itensCart", itensCart);

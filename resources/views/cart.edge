@@ -33,7 +33,7 @@
     </td>
     <td>
       <div class="input-group mb-3">
-     <input name="product_name" value="{{data.product.id_categories}}" readonly />
+     <input name="product_name" readonly value="{{data.product.id_categories}}"  />
       </div>
     </td>
     <td>
@@ -41,7 +41,7 @@
           <div class="input-group-prepend">
             <button class="btn btn-outline-secondary remove" type="button" id="button-addon1">-</button>
           </div>
-        <input type="number" min="1" max="10" value="{{data.quantidade}}" class="form-control total" name="quantity" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+        <input type="text" readonly value="{{data.quantidade}}" class="form-control total" name="quantity" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
           <div class="input-group-append">
             <button class="btn btn-outline-secondary add" type="button" id="button-addon2">+</button>
           </div>
