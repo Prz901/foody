@@ -3,12 +3,14 @@
         <nav class="navbar navbar-expand-lg bg-red" class="menu">
           <h1 class="navbar-brand" ><a href="/client">Foody</a></h1>
           <a href="/cart"><img src="cart.png" height="20" width="20"></img></a>
+          <a href="/orderIndex" class="ml-5">Pedidos</a>
           <a href="/logout" class="logoutButton" role="button" aria-pressed="true">Logout</a>
         </nav>
 @endsection
 @section('confirm-order')
 <div class="register-box">
     <h1>Pedido realizado com sucesso!</h1>
+    <a href="/orderIndex">Visualizar seus pedidos</a>
 </div>
 
 @endsection
