@@ -18,30 +18,23 @@
   </tr>
 </thead>
 <tbody>
-@each(order in orders.toJSON())
+@each(orders in order.toJSON())
   <tr>  
     <td>
-      <div class="input-group mb-3">
-        <input value="{{order.id_products}}"></input>
-      </div>
+        {{orders.id_products}}
     </td>
     <td>
-      <div class="input-group mb-3">
-     <input name="product_name" value="{{data.product.product_name}}"></input>
-      </div>
+        {{orders.product_name}}
     </td>
     <td>
-      <div class="input-group mb-3">
-        <input name="price" value="{{data.product.price}}"></input>
-      </div>
+        {{orders.price}}
     </td>
-    <td>{{order.product.id_categories}}</td>
     <td>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <button class="btn btn-outline-secondary remove" type="button" id="button-addon1">-</button>
           </div>
-        <input type="number" min="1" max="10" value="{{data.quantity}}" class="form-control total" name="quantity" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+        <input type="number" min="1" max="10" value="{{orders.quantity}}" class="form-control total" name="quantity" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
           <div class="input-group-append">
             <button class="btn btn-outline-secondary add" type="button" id="button-addon2">+</button>
           </div>
@@ -52,7 +45,6 @@
 @endeach
 </tbody>
 <input type="submit" class="btn btn-success" value="Realizar pagamento"></input>
-
 <a href="/order/clear" class="btn btn-danger buttonCart ">Apagar pedidos</a>
 </form>
 </table>

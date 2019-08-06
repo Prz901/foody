@@ -76,5 +76,8 @@ Route.get("/cart/:id/update", "CartController.update").middleware("auth");
 //Order
 Route.get("/order", "OrderController.index");
 Route.get("/order/:id", "OrderController.show");
+//colocar esses metodos e rotas para um novo controller
+Route.get("/orderList", "OrderController.list");
+Route.post("/orderSearch", "OrderController.searchOrder");
 
 Route.get("/cart/:id/update", "CartController.update").middleware("auth");

@@ -2,6 +2,7 @@
 
 const Product = use("App/Models/Product");
 const Order = use("App/Models/Order");
+const OrderProduct = use("App/Models/OrderProduct");
 
 class CartController {
     async create({ request, response, auth, session, params }) {
@@ -30,35 +31,26 @@ class CartController {
 
     async store({ request, response, auth, view, session }) {
         if (auth.user && auth.user.type == "client") {
-           const data = session.get("itensCart");
-           data.quantity = await request.only(["quantity"]);
-           console.log(data)
-           data.forEach(async (item) => {
-               //console.log(item);
-                let orders = {};
-                orders.id_products = item.product.id_products;
-                orders.price = item.product.price;
-                orders.id_users = auth.user.id;
-                orders.quantity = item.quantity;
-               // console.log(orders);
-                await Order.create(orders);
-           });
-         /*   const products = [];
-            const data = await session.get("itensCart");
+            const data = session.get("itensCart");
+            data.quantity = await request.only(["quantity"]);
+            const order = await Order.create({
+                id_users: auth.user.id,
+                status: "aberto"
+            });
+            data.forEach(async item => {
+                await OrderProduct.create({
+                    id_orders: order.id,
+                    id_products: item.product.id,
+                    price: item.product.price,
+                    product_name: item.product.product_name,
+                    quantity: item.quantity,
+                    id_users: auth.user.id
+                });
+            });
 
-            data.forEach(async (item) => {
-                products.push(item.product.id);
-            })
-
-            const order = await Order.create({id_users: auth.user.id, price: 15});
-            await order.products().count();*/
-
-
-            // return view.render("order", { orders });
             return response.redirect("/order");
         }
-    }  
-    
+    }
 
     // remover um produto do carrinho
     async update({ request, response, auth, session, params }) {

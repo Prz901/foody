@@ -9,9 +9,9 @@
 <form action="/product" method="post" class="register-box">
     <h3>Insira as seguintes informações:</h3>
     <label class="col-form-label-lg">Nome produto: </label>
-    <input class="form-control" type="text" name="product_name"></input>
+    <input class="form-control" type="text" name="product_name"/>
     <label class="col-form-label-lg">Preço: </label>
-    <input class="form-control" name="price"></input>
+    <input class="form-control" name="price"/>
     <label class="col-form-label-lg">Categoria: </label>
     <select  name="id_categories" class="custom-select mb-4" id="inputGroupSelect01">
         <option>Escolha uma categoria...</option>
@@ -19,6 +19,9 @@
         <option value="{{category.id}}">{{category.category_name}}</option>
         @endeach
     </select>
-    <input type="submit" class="btn btn-outline-danger btn-sm" value="Salvar"></input>
+    <label class="col-form-label-lg">Imagem: </label>
+    <input type="file" name="image"/>
+    <br>
+    <input type="submit" class="btn btn-outline-danger btn-sm" value="Salvar"/>
 </form>
 @endsection

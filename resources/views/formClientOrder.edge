@@ -1,0 +1,24 @@
+@layout('LogedTemplate')
+@section('navbar-admin')
+    <nav class="navbar navbar-expand-lg bg-red" class="menu">
+        <h1 class="navbar-brand"><a href="/admin">Foody</a></h1>
+        <a href="/logout" class="logoutButton" role="button" aria-pressed="true">Logout</a>
+    </nav>
+@endsection
+@section('List-orders')
+<form action="/orderSearch" method="post">
+        <div class="form-group">
+                <select name="id_users" class="custom-select" id="inputGroupSelect01">
+                    <option>Escolha um usuario</option>
+                        @each(user in users)
+                        <option value="{{user.id}}" >{{user.username}}</option>
+                        @endeach
+                </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Data:</label>
+          <input type="date" name="data" class="form-control"  placeholder="Data">
+        </div>
+        <button type="submit"  class="btn btn-primary buttonData">Submit</button>
+</form>
+@endsection

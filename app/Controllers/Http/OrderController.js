@@ -1,31 +1,45 @@
-'use strict'
+"use strict";
 
-const Order = use('App/Models/Order');
+const OrderProduct = use("App/Models/OrderProduct");
+const Order = use("App/Models/Order");
+const User = use("App/Models/User");
 
 class OrderController {
-    async index({ auth, view, params }){
+    async create({ request, response, auth }) {
+        const users = auth.user.id;
+        await Order.create(users);
+    }
+
+    async index({ auth, view, params }) {
         if (auth.user && auth.user.type == "client") {
-            /*const orders = await Order
-                                .table('orders')
-                                .where('id_users', auth.user.id)
-                                .first();*/
-            const orders = await Order.all();
-            return view.render("order", { orders });
+            const order = await Order.all();
+            console.log(order.toJSON());
+            return view.render("order", { order });
         }
     }
 
-    async show({request, response, params, view}){
-        const order = await Order.findByOrFail("id", params.id);
+    async show({ params, view, response }) {
+        const order = await OrderProduct.findByOrFail("id_orders", params.id);
+        console.log(order);
         return view.render("order", { order });
     }
 
     async destroy({ response, params, auth }) {
         if (auth.user && auth.user.type == "client") {
-          const data = await Order.findOrFail(params.id);
-          await data.delete();
-          return response.redirect("/order");
+            const data = await Order.findOrFail(params.id);
+            await data.delete();
+            return response.redirect("/order");
         }
-      }
+    }
+    async list({ view, request, response }) {
+        const user = await User.all();
+        const users = user.toJSON();
+        return view.render("formClientOrder", { users });
+    }
+    async searchOrder({ request, view }) {
+        const order = await request.only(["id_users", "data"]);
+        console.log(order);
+    }
 }
 
-module.exports = OrderController
+module.exports = OrderController;
