@@ -3,12 +3,12 @@
         <nav class="navbar navbar-expand-lg bg-red" class="menu">
           <h1 class="navbar-brand" ><a href="/client">Foody</a></h1>
           <a href="/cart"><img src="cart.png" height="20" width="20"></img></a>
+          <a href="/orderIndex" class="ml-5">Pedidos</a>
           <a href="/logout" class="logoutButton" role="button" aria-pressed="true">Logout</a>
         </nav>
 @endsection
 @section('table')
 <table class="table table-striped">
-<form action="/cart" method="post">
 <thead>
   <tr>
     <th scope="col">Produto</th>
@@ -19,6 +19,7 @@
   </tr>
 </thead>
 <tbody>
+<form action="/order" method="post">
 @each(data in datas.itensCart)
   <tr data-product="{{data.product.id}}" id="product_{{data.product.id}}">  
     <td>
@@ -49,10 +50,10 @@
       </td>
       <td><a href="/cart/{{data.product.id}}/update"><img src="lixeira.png" height="30" width="30"></img></a></td>
   </tr>
+  
 @endeach
 </tbody>
-<input type="submit" class="btn btn-success" value="Realizar pagamento"></input>
-
+<input type="submit" class="btn btn-success" value="Realizar Pedido"></input>
 <a href="/cart/clear" class="btn btn-danger buttonCart ">Limpar carrinho</a>
 </form>
 </table>

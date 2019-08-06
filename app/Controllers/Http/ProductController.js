@@ -49,10 +49,10 @@ class ProductController {
 
         const categories = await Category.all();
 
-        return view.render("editproduct", { product, categories });
-    }
 
-    async store({ request, response, auth }) {
+        return view.render("editproduct", { product, categories });
+      
+      async store({ request, response, auth }) {
             if (auth.user && auth.user.type == "admin") {
                 const data = await request.only([
                     "product_name",
