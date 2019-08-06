@@ -8,39 +8,35 @@
 @endsection
 @section('table')
 <table class="table table-striped">
-<form action="/order" method="post">
+
 <thead>
   <tr>
     <th scope="col">Id Produto</th>
+    <th scope="col">Nome</th>
     <th scope="col">Preço</th>
     <th scope="col" width='300'>Quantidade</th>
     <th scope="col" width='300'>Remover</th>
   </tr>
 </thead>
 <tbody>
-@each(orders in order.toJSON())
-  <tr>  
+@each(order in orderProducts.toJSON())
+<form action="order/{{order.id_orders}}" method="post">
+  <tr> 
     <td>
-      <div class="input-group mb-3">
-        <input value="{{orders.id_products}}"></input>
-      </div>
+      {{order.id_users}}
     </td>
     <td>
-      <div class="input-group mb-3">
-     <input name="product_name" value="{{orders.product_name}}"></input>
-      </div>
+      {{order.product_name}}
     </td>
     <td>
-      <div class="input-group mb-3">
-        <input name="price" value="{{orders.price}}"></input>
-      </div>
+      {{order.price}}
     </td>
     <td>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <button class="btn btn-outline-secondary remove" type="button" id="button-addon1">-</button>
           </div>
-        <input type="number" min="1" max="10" value="{{orders.quantity}}" class="form-control total" name="quantity" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+        <input type="number" min="1" max="10" value="{{order.quantity}}" class="form-control total" name="quantity" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1"></input>
           <div class="input-group-append">
             <button class="btn btn-outline-secondary add" type="button" id="button-addon2">+</button>
           </div>
@@ -50,7 +46,7 @@
   </tr>
 @endeach
 </tbody>
-<input type="submit" class="btn btn-success" value="Realizar pagamento"></input>
+<input type="submit" class="btn btn-success" value="Finalizar pedido"></input>
 <a href="/order/clear" class="btn btn-danger buttonCart ">Apagar pedidos</a>
 </form>
 </table>

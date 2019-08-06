@@ -32,26 +32,26 @@ class CartController {
     async store({ request, response, auth, view, session }) {
         if (auth.user && auth.user.type == "client") {
            const data = session.get("itensCart");
-           data.quantity = await request.only(["quantity"]);
-           console.log(data)
+           data.quantity = await request.only(["quantity","id_pedido"]);
+           
            const order =  await Order.create({
                 id_users: auth.user.id,
                 status: "aberto" 
            });
+           
            data.forEach(async (item) => {
-               //console.log(item);
+               
                 await OrderProduct.create({
                     id_orders: order.id,
                     id_products: item.product.id,
+                    product_name: item.product.product_name,
                     price: item.product.price,
-                    //product_name: item.product.product_name,
                     quantity: item.quantity,
                     id_users: auth.user.id
-                })
-             
+                })  
            });
-         
-            return response.redirect("/order");
+          
+           return view.render("/orderconfirm");
         }
     }  
     

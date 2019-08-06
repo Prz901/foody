@@ -60,9 +60,7 @@ class ProductController {
         "price",
         "id_categories"
       ]);
-      console.log(data);
       data.id_users = auth.user.id;
-      console.log(data);
       const product = await Product.create(data);
       return response.redirect("/product");
     }
