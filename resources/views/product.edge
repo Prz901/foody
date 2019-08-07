@@ -22,13 +22,13 @@
     <form action="/product" method="post">
       <tr>
         @each(product in products.toJSON())
-            <tr> 
-
+            <tr>
                     <td name="id_product">
                         {{ product.id }}
                     </td>
-                    <td name="product_image"></td>
-
+                    <td name="product_image">
+                        <img src="{{product.image}}"/>
+                    </td>
                     <td name="product_name">
                         {{ product.product_name }}
                     </td>

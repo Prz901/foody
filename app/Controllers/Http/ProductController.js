@@ -65,12 +65,12 @@ class ProductController {
                                             types: ['image'],
                                             size: '2mb'
                 });
-               
-                await images.move(Helpers.tmpPath('../App/uploads'))
+               const fileName = `${new Date().getTime()}.${images.extname}`;
+                await images.move(Helpers.publicPath('uploads'), {name: fileName})
 
                 
                 data.id_users = auth.user.id;
-                data.image = '../App/uploads/' + images.fileName;
+                data.image = '/uploads/' + images.fileName;
                 const product = await Product.create(data);
                 
                 return response.redirect("/product");
