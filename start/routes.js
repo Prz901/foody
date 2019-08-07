@@ -74,6 +74,11 @@ Route.get("/cart/clear", "CartController.destroy").middleware("auth");
 Route.get("/cart/:id/update", "CartController.update").middleware("auth");
 
 //Order
+Route.get("/order", "OrderController.index");
+Route.get("/order/:id", "OrderController.show");
+Route.get("/orderList", "OrderController.list");
+Route.post("/orderSearch", "OrderController.searchOrder");
+
 Route.get("/orderIndex", "OrderController.index");
 Route.post("/order", "CartController.store");
 Route.get('/order/:id', "OrderController.show");

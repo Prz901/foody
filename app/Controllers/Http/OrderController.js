@@ -1,7 +1,8 @@
-'use strict'
+"use strict";
 
-const OrderProduct = use('App/Models/OrderProduct');
-const Order = use('App/Models/Order');
+const OrderProduct = use("App/Models/OrderProduct");
+const Order = use("App/Models/Order");
+const User = use("App/Models/User");
 
 class OrderController {
     async index({ auth, view }){
@@ -26,11 +27,20 @@ class OrderController {
 
     async destroy({ response, params, auth }) {
         if (auth.user && auth.user.type == "client") {
-          const data = await Order.findOrFail(params.id);
-          await data.delete();
-          return response.redirect("/order");
+            const data = await Order.findOrFail(params.id);
+            await data.delete();
+            return response.redirect("/order");
         }
-      }
+    }
+    async list({ view, request, response }) {
+        const user = await User.all();
+        const users = user.toJSON();
+        return view.render("formClientOrder", { users });
+    }
+    async searchOrder({ request, view }) {
+        const order = await request.only(["id_users", "data"]);
+        console.log(order);
+    }
 }
 
-module.exports = OrderController
+module.exports = OrderController;

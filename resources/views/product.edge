@@ -12,6 +12,7 @@
     <thead>
       <tr>
         <th scope="col">#</th>
+        <th scope="col">imagem</th>
         <th scope="col">produto</th>
         <th scope="col">preço</th>
         <th scope="col">categoria</th>
@@ -22,9 +23,12 @@
       <tr>
         @each(product in products.toJSON())
             <tr> 
+
                     <td name="id_product">
                         {{ product.id }}
                     </td>
+                    <td name="product_image"></td>
+
                     <td name="product_name">
                         {{ product.product_name }}
                     </td>

@@ -2,7 +2,7 @@
 
 const Product = use("App/Models/Product");
 const Order = use("App/Models/Order");
-const OrderProduct = use('App/Models/OrderProduct');
+const OrderProduct = use("App/Models/OrderProduct");
 
 class CartController {
     async create({ request, response, auth, session, params }) {
@@ -31,6 +31,7 @@ class CartController {
 
     async store({ request, response, auth, view, session }) {
         if (auth.user && auth.user.type == "client") {
+
            const data = session.get("itensCart");
            data.quantity = await request.only(["quantity","id_pedido"]);
            
@@ -40,21 +41,19 @@ class CartController {
            });
            
            data.forEach(async (item) => {
-               
                 await OrderProduct.create({
                     id_orders: order.id,
                     id_products: item.product.id,
                     product_name: item.product.product_name,
                     price: item.product.price,
+
                     quantity: item.quantity,
                     id_users: auth.user.id
                 })  
            });
-          
            return view.render("/orderconfirm");
         }
-    }  
-    
+    }
 
     // remover um produto do carrinho
     async update({ request, response, auth, session, params }) {
