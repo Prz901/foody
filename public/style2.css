@@ -86,7 +86,11 @@ p {
 }
 
 .logoutButton {
-    margin-left: 85%;
+    margin-left: 2.5%;
+}
+
+.pedido {
+    margin-left: 80%;
 }
 
 .buttonCart {
