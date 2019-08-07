@@ -88,6 +88,15 @@ class ProductController {
             if (auth.user && auth.user.type == "admin") {
                 const { id } = params;
                 const data = request.all();
+
+                const images = await request.file('image', {
+                    types: ['image'],
+                    size: '2mb'
+                });
+
+                await images.move(Helpers.tmpPath('../App/uploads'))
+                data.image = '../App/uploads/' + images.fileName;
+                
                 const product = await Product.findBy("id", id);
                 product.merge(data);
                 await product.save();
