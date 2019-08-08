@@ -38,8 +38,15 @@ class OrderController {
         return view.render("formClientOrder", { users });
     }
     async searchOrder({ request, view }) {
-        const order = await request.only(["id_users", "data"]);
-        console.log(order);
+        const order = await request.only(["id_users", "dataInicial", "dataFinal"]);
+        const orders = await Order.query()
+            .whereRaw(
+                `date(created_at) BETWEEN '${order.dataInicial}' AND '${
+          order.dataFinal
+        }'`
+            )
+            .fetch();
+        console.log(orders.toJSON());
     }
 }
 

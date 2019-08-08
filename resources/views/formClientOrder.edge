@@ -7,18 +7,16 @@
 @endsection
 @section('List-orders')
 <form action="/orderSearch" method="post">
-        <div class="form-group">
-                <select name="id_users" class="custom-select" id="inputGroupSelect01">
-                    <option>Escolha um usuario</option>
-                        @each(user in users)
-                        <option value="{{user.id}}" >{{user.username}}</option>
-                        @endeach
-                </select>
+        <div>
+            Busque os pedidos dentre um tempo especifico
         </div>
+        <br>    
         <div class="form-group">
-          <label for="exampleInputPassword1">Data:</label>
-          <input type="date" name="data" class="form-control"  placeholder="Data">
+          <label for="exampleInputPassword1">Data Inicial:</label>
+          <input type="date" lang="en" name="dataInicial" class="form-control"  placeholder="Data">
+          <label for="exampleInputPassword1">Data Final:</label>
+          <input type="date" lang="en" name="dataFinal" class="form-control"  placeholder="Data">
         </div>
-        <button type="submit"  class="btn btn-primary buttonData">Submit</button>
+        <button type="submit"  class="btn btn-primary buttonData">Buscar</button>
 </form>
 @endsection
