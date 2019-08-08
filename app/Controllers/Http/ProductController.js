@@ -21,11 +21,10 @@ class ProductController {
      * @param {Response} ctx.response
      * @param {View} ctx.view
      */
-    async index({ request, response, view }) {
-            const products = await Product.all();
-            //return response.status(200).send(products);
-            return view.render("product", { products });
-        }
+    async index({ view }) {
+        const products = await Product.query().with('category').fetch();
+        return view.render("product", { products });
+    }
         /**
          * Create/save a new product.
          * POST products
@@ -61,6 +60,7 @@ class ProductController {
                     "price",
                     "id_categories"
                 ]);
+               
                 const images = await request.file('image', {
                                             types: ['image'],
                                             size: '2mb'

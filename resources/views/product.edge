@@ -33,10 +33,10 @@
                         {{ product.product_name }}
                     </td>
                     <td name="price">
-                        {{ product.price }}
+                        R$ {{ product.price }}
                     </td>
                     <td name="id_categories">
-                        {{ product.id_categories }}
+                        {{ product.category.category_name }}
                     </td>
                     <td>
                         <a class="btn btn-outline-info btn-sm" href="/editproduct/{{product.id}}">Editar</a>

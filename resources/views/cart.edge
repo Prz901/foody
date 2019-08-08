@@ -14,7 +14,6 @@
     <th scope="col">Imagem</th>
     <th scope="col">Produto</th>
     <th scope="col">Preço</th>
-    <th scope="col">Categoria</th>
     <th scope="col" width='300'>Quantidade</th>
     <th scope="col" width='300'>Remover</th>
   </tr>
@@ -33,12 +32,7 @@
     </td>
     <td>
       <div class="input-group mb-3">
-          <input name="price" value="{{data.product.price}}" readonly/>
-      </div>
-    </td>
-    <td>
-      <div class="input-group mb-3">
-     <input name="product_name" readonly value="{{data.product.id_categories}}"  />
+          R$ <input name="price" value="{{data.product.price}}" readonly/>
       </div>
     </td>
     <td>
