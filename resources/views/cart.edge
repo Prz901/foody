@@ -8,7 +8,6 @@
 @endsection
 @section('table')
 <table class="table table-striped">
-<form action="/cart" method="post">
 <thead>
   <tr>
     <th scope="col">Produto</th>
@@ -19,6 +18,7 @@
   </tr>
 </thead>
 <tbody>
+<form action="/order" method="post">
 @each(data in datas.itensCart)
   <tr data-product="{{data.product.id}}" id="product_{{data.product.id}}">  
     <td>
@@ -49,10 +49,10 @@
       </td>
       <td><a href="/cart/{{data.product.id}}/update"><img src="lixeira.png" height="30" width="30"></img></a></td>
   </tr>
+  
 @endeach
 </tbody>
-<input type="submit" class="btn btn-success" value="Realizar pagamento"></input>
-
+<input type="submit" class="btn btn-success" value="Realizar Pedido"></input>
 <a href="/cart/clear" class="btn btn-danger buttonCart ">Limpar carrinho</a>
 </form>
 </table>

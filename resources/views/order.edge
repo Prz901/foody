@@ -3,48 +3,38 @@
         <nav class="navbar navbar-expand-lg bg-red" class="menu">
           <h1 class="navbar-brand" ><a href="/client">Foody</a></h1>
           <a href="/cart"><img src="cart.png" height="20" width="20"></img></a>
+          <a href="/orderIndex" class="ml-5">Pedidos</a>
           <a href="/logout" class="logoutButton" role="button" aria-pressed="true">Logout</a>
         </nav>
 @endsection
 @section('table')
 <table class="table table-striped">
-<form action="/order" method="post">
+
 <thead>
   <tr>
-    <th scope="col">Id Produto</th>
-    <th scope="col">Preço</th>
-    <th scope="col" width='300'>Quantidade</th>
-    <th scope="col" width='300'>Remover</th>
+    <th scope="col">Número do Pedido</th>
+    <th scope="col">Status</th>
+    <th scope="col">Data</th>
+    <th scope="col">Valor total</th>
   </tr>
 </thead>
 <tbody>
-@each(orders in order.toJSON())
-  <tr>  
+@each(order in orders.toJSON())
+<form action="order/{{order.id_orders}}" method="post">
+  <tr> 
     <td>
-        {{orders.id_products}}
+      {{order.id}}
     </td>
     <td>
-        {{orders.product_name}}
+      {{order.status}}
     </td>
     <td>
-        {{orders.price}}
+      {{order.created_at}}
     </td>
-    <td>
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <button class="btn btn-outline-secondary remove" type="button" id="button-addon1">-</button>
-          </div>
-        <input type="number" min="1" max="10" value="{{orders.quantity}}" class="form-control total" name="quantity" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary add" type="button" id="button-addon2">+</button>
-          </div>
-        </div>
-      </td>
-      <td><a href="/cart"><img src="lixeira.png" height="30" width="30"></img></a></td>
   </tr>
 @endeach
 </tbody>
-<input type="submit" class="btn btn-success" value="Realizar pagamento"></input>
+<input type="submit" class="btn btn-success" value="Finalizar pedido"></input>
 <a href="/order/clear" class="btn btn-danger buttonCart ">Apagar pedidos</a>
 </form>
 </table>

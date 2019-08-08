@@ -5,23 +5,22 @@ const Order = use("App/Models/Order");
 const User = use("App/Models/User");
 
 class OrderController {
-    async create({ request, response, auth }) {
-        const users = auth.user.id;
-        await Order.create(users);
-    }
-
-    async index({ auth, view, params }) {
+    async index({ auth, view }){
         if (auth.user && auth.user.type == "client") {
-            const order = await Order.all();
-            console.log(order.toJSON());
-            return view.render("order", { order });
+            /*const orders = await Order
+                                .table('orders')
+                                .where('id_users', auth.user.id)
+                                .first();*/
+            const orders = await Order.all();
+            console.log(orders.toJSON())
+            return view.render("order", { orders });
         }
     }
 
-    async show({ params, view, response }) {
-        const order = await OrderProduct.findByOrFail("id_orders", params.id);
-        console.log(order);
-        return view.render("order", { order });
+    async show({ params, view, response }){
+        const orderProducts = await OrderProduct.findByOrFail("id_orders", params.id);
+     
+        return view.render("order", { orderProducts });  
     }
 
     async destroy({ response, params, auth }) {
