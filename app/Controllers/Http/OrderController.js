@@ -27,6 +27,7 @@ class OrderController {
             await order.save();
             return response.redirect("/orderIndex");
         }
+
     }
 
     async destroy({ response, params, auth }) {
