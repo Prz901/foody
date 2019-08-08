@@ -5,24 +5,29 @@ const Order = use("App/Models/Order");
 const User = use("App/Models/User");
 
 class OrderController {
-    async index({ auth, view }){
+    async index({ auth, view }) {
+        const orders = await Order.all();
         if (auth.user && auth.user.type == "client") {
-            /*const orders = await Order
-                                .table('orders')
-                                .where('id_users', auth.user.id)
-                                .first();*/
-            const orders = await Order.all();
-            console.log(orders.toJSON())
             return view.render("order", { orders });
         }
+        return view.render("adminListOrder", { orders });
     }
 
-    async show({ params, view, response }){
+    async show({ params, view, response, auth }) {
         if (auth.user && auth.user.type == "admin") {
-            const orderProducts = await OrderProduct.findByOrFail("id_orders", params.id);
-     
-            return view.render("order", { orderProducts }); 
-        } 
+            const order = await Order.findByOrFail("id", params.id);
+            return view.render("formOrder", { order });
+        }
+    }
+    async update({ params, view, auth, request, response }) {
+        if (auth.user && auth.user.type == "admin") {
+            const data = request.only(["status"]);
+            const order = await Order.findByOrFail("id", params.id);
+            order.merge(data);
+            await order.save();
+            return response.redirect("/orderIndex");
+        }
+
     }
 
     async destroy({ response, params, auth }) {

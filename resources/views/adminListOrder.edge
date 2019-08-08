@@ -1,0 +1,40 @@
+@layout('LogedTemplate')
+@section('navbar-client')
+        <nav class="navbar navbar-expand-lg bg-red" class="menu">
+          <h1 class="navbar-brand" ><a href="/admin">Foody</a></h1>
+          <a href="/logout" class="logoutButton" role="button" aria-pressed="true">Logout</a>
+        </nav>
+@endsection
+@section('table')
+<table class="table table-striped">
+
+<thead>
+  <tr>
+    <th scope="col">Número do Pedido</th>
+    <th scope="col">Status</th>
+    <th scope="col">Data</th>
+    <th scope="col">Atualizar Pedido</th>
+  </tr>
+</thead>
+<tbody>
+@each(order in orders.toJSON())
+<form action="order/{{order.id_orders}}" method="post">
+  <tr> 
+    <td>
+      {{order.id}}
+    </td>
+    <td>
+      {{order.status}}
+    </td>
+    <td>
+      {{order.created_at}}
+    </td>
+    <td>
+    <a type="button" class="btn btn-success btn-sm" href="/order/{{order.id}}">Atualizar</a>
+    </td>
+  </tr>
+@endeach
+</tbody>
+</form>
+</table>
+@endsection
