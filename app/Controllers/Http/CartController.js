@@ -46,7 +46,7 @@ class CartController {
                     id_products: item.product.id,
                     product_name: item.product.product_name,
                     price: item.product.price,
-
+                    image: item.product.image,
                     quantity: item.quantity,
                     id_users: auth.user.id
                 })  

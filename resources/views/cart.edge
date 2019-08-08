@@ -24,7 +24,7 @@
 @each(data in datas.itensCart)
   <tr data-product="{{data.product.id}}" id="product_{{data.product.id}}">  
     <td name="product_image">
-      <img class="img-product-sm" src="{{product.image}}"/>
+      <img class="img-product-sm" src="{{data.product.image}}"/>
     </td>
     <td>
       <div class="input-group mb-3">

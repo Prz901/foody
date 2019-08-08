@@ -20,7 +20,7 @@
 </thead>
 <tbody>
 @each(product in products.toJSON())
-<form action="/product/{{product.id}}/cart " method="POST">
+<form action="/product/{{product.id}}/cart" method="POST">
 <tr id="produto_{{product.id}}">
     <td name="product_image">
       <img class="img-product" src="{{product.image}}"/>
@@ -28,7 +28,7 @@
     <td>{{product.product_name}}</td>
     <td>{{product.price}}</td>
     <td>{{product.id_categories}}</td>
-    <td><button  type="submit">Salvar</button></td>
+    <td><button type="submit">Salvar</button></td>
   </tr>
 </form>
 @endeach
