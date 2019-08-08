@@ -11,6 +11,7 @@
 <table class="table table-striped">
 <thead>
   <tr>
+    <th scope="col">Imagem</th>
     <th scope="col">Produto</th>
     <th scope="col">Preço</th>
     <th scope="col">Categoria</th>
@@ -22,6 +23,9 @@
 <form action="/order" method="post">
 @each(data in datas.itensCart)
   <tr data-product="{{data.product.id}}" id="product_{{data.product.id}}">  
+    <td name="product_image">
+      <img class="img-product-sm" src="{{product.image}}"/>
+    </td>
     <td>
       <div class="input-group mb-3">
         <input name="id_products" value="{{data.product.product_name}}" readonly />

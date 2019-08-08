@@ -65,7 +65,7 @@ class ProductController {
                                             types: ['image'],
                                             size: '2mb'
                 });
-               const fileName = `${new Date().getTime()}.${images.extname}`;
+                const fileName = `${new Date().getTime()}.${images.extname}`;
                 await images.move(Helpers.publicPath('uploads'), {name: fileName})
 
                 
@@ -94,8 +94,12 @@ class ProductController {
                     size: '2mb'
                 });
 
-                await images.move(Helpers.tmpPath('../App/uploads'))
-                data.image = '../App/uploads/' + images.fileName;
+               /* await images.move(Helpers.tmpPath('../App/uploads'))
+                data.image = '../App/uploads/' + images.fileName;*/
+                const fileName = `${new Date().getTime()}.${images.extname}`;
+                await images.move(Helpers.publicPath('uploads'), {name: fileName})
+
+                data.image = '/uploads/' + images.fileName;
                 
                 const product = await Product.findBy("id", id);
                 product.merge(data);
