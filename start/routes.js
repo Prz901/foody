@@ -81,8 +81,9 @@ Route.post("/orderSearch", "OrderController.searchOrder");
 
 Route.get("/orderIndex", "OrderController.index");
 Route.post("/order", "CartController.store");
-Route.get('/order/:id', "OrderController.show");
+Route.get("/order/:id", "OrderController.show");
 
+Route.post("/order/:id/update", "OrderController.update").middleware("auth");
 Route.get("/order/clear", "OrderController.destroy").middleware("auth");
 
 Route.get("/cart/:id/update", "CartController.update").middleware("auth");
