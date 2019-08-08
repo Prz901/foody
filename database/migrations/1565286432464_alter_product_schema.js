@@ -5,8 +5,8 @@ const Schema = use('Schema')
 
 class AlterProductSchema extends Schema {
   up () {
-    this.alter('products', (table) => {
-        table
+    this.create('products', (table) => {
+      table
         .string("category_name")
         .notNullable()
         .references("id")

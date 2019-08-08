@@ -9,7 +9,7 @@ class Product extends Model {
   }
 
   category() {
-    return this.belongsTo("App/Models/Category", "id", "id_categories");
+    return this.hasOne("App/Models/Category", "id_categories", "id");
   }
 
   orders() {
