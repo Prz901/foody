@@ -7,7 +7,7 @@
 @endsection
 @section('form-edit')
 
-<form action="/product/{{product.id}}/update" method="post" class="register-box">
+<form action="/product/{{product.id}}/update" method="post" class="register-box" enctype="multipart/form-data">
     <h3>Edite as seguintes informações:</h3>
     <label class="col-form-label-lg">Nome produto: </label><input class="form-control" type="text" name="product_name"></input><br></br>
     <label class="col-form-label-lg">Preço: </label><input class="form-control" name="price"></input><br></br>
@@ -17,6 +17,9 @@
         <option value="{{category.id}}" name="id_categories">{{category.category_name}}</option>
         @endeach
     </select><br>
+    <label class="col-form-label-lg">Imagem: </label>
+    <input type="file" name="image"/>
+    <br></br>
     <input type="submit" class="btn btn-outline-danger btn-sm" value="Salvar"></input>
 </form>
 @endsection

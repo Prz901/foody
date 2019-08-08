@@ -6,7 +6,7 @@
     </nav>
 @endsection
 @section('form-create')
-<form action="/product" method="post" class="register-box">
+<form action="/product" method="post" class="register-box" enctype="multipart/form-data">
     <h3>Insira as seguintes informações:</h3>
     <label class="col-form-label-lg">Nome produto: </label>
     <input class="form-control" type="text" name="product_name"/>

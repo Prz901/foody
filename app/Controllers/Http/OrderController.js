@@ -18,9 +18,11 @@ class OrderController {
     }
 
     async show({ params, view, response }){
-        const orderProducts = await OrderProduct.findByOrFail("id_orders", params.id);
+        if (auth.user && auth.user.type == "admin") {
+            const orderProducts = await OrderProduct.findByOrFail("id_orders", params.id);
      
-        return view.render("order", { orderProducts });  
+            return view.render("order", { orderProducts }); 
+        } 
     }
 
     async destroy({ response, params, auth }) {
