@@ -1,10 +1,10 @@
 @layout('template')
 @section('form-login')
 <div class="register-box">
-    <div class="logo"></div>
     <div class="form-box">
+    <img src="logomudi.svg" class="logo-mudi-inicio ml-5"/>
       <form action="/login" method="post">
-        <fieldset>
+        <fieldset class="welcome-box">
           <legend>Personal information:</legend>
           @if(message)
             <h1>{{message}}</h1>
@@ -14,8 +14,8 @@
           <input type="email" class="form-control" name="email" value=""><br>
           Password:
           <input type="password" class="form-control" name="password" value=""><br>
-          <button type="submit" class="btn btn-success">Login</button><br>
-          <a href='/register' class="btn btn-danger">Register</a>
+          <button type="submit" class="btn btn-success ml-5">Login</button><br>
+          <a href='/register' class="btn btn-danger ml-5 mt-3">Register</a>
         </fieldset>
       </form> 
     </div>

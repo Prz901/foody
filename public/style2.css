@@ -59,8 +59,9 @@ section:before {
 }
 
 .menu {
-    background-color: red;
+    background: linear-gradient(45deg,#9d0039,#ec145a);
 }
+
 
 a {
     color: inherit;
@@ -117,3 +118,11 @@ p {
 .buttonData {
     margin-left: 40%
 }
+
+.bt-menu {
+    background-color: #ed145b;
+    color: #ffffff;
+}
+
+
+
