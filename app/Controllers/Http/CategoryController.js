@@ -4,7 +4,7 @@ const Category = use("App/Models/Category");
 const User = use("App/Models/User");
 
 class CategoryController {
-    async index({ response, view, auth }) {
+    async index({ response, view }) {
         const categories = await Category.all();
         const cat = categories.toJSON();
         return view.render("category", { cat });
