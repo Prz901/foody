@@ -52,7 +52,8 @@ class CartController {
                     id_users: auth.user.id
                 });
             });
-            return view.render("/orderconfirm");
+            //return view.render("/orderconfirm");
+            return response.redirect("/order");
         }
     }
 
