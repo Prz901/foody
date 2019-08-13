@@ -87,12 +87,15 @@ p {
 }
 
 .logoutButton {
-    margin-left: 75%;
-
+    margin-left: 5%;
+    text-decoration: none;
+    color: #ffffff;
 }
 
 .pedido {
-    margin-left: 80%;
+    margin-left: 75%;
+    text-decoration: none;
+    color: #ffffff;
 }
 
 .buttonCart {
