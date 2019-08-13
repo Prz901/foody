@@ -1,22 +1,31 @@
 @layout('LogedTemplate')
 
-@section('table')
+
+
+@section('sidebar')
+@endsection
+
+@section('content')
 <table class="table table-striped">
 
 <thead>
   <tr>
     <th scope="col">Número do Pedido</th>
+    <th scope="col">Cliente</th>
     <th scope="col">Status</th>
     <th scope="col">Data</th>
     <th scope="col">Atualizar Pedido</th>
   </tr>
 </thead>
 <tbody>
-@each(order in orders.toJSON())
+@each(order in clientOrder.toJSON())
 <form action="order/{{order.id_orders}}" method="post">
   <tr> 
     <td>
       {{order.id}}
+    </td>
+    <td>
+      {{order.user.username}}
     </td>
     <td>
       {{order.status}}

@@ -1,13 +1,11 @@
-@layout('LogedTemplate')
-@section('navbar-admin')
+@layout('LogedTemplate.edge')
+@section('header-navbar')
+  
 @endsection
-@section('admin-home')
-<div class = "register-box">
-<h2>Bem vindo, {{username}}</h2>
-  <div class = "internalButton">
-    <a href="/category" class="btn btn active mt-2 w-100 bt-menu" max-width="200px"  role="button" aria-pressed="true">Categoria</a>
-    <a href="/users" class="btn btn active mt-2 w-100 bt-menu" max-width="200px"  role="button" aria-pressed="true">Usuarios</a>
-    <a href="/product" class="btn btn active mt-2 w-100 bt-menu" max-width="200px" role="button" aria-pressed="true">Produtos</a>
-  </div>
-</div> 
+
+@section('sidebar')
+@endsection
+
+@section('content')
+
 @endsection

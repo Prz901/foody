@@ -15,7 +15,9 @@ class CartController {
                 item => item.product.id === product.id
             );
             if (productIndex > -1) {
-                itensCart[productIndex].quantity += quantity;
+                if (itensCart[productIndex].quantity <= 19) {
+                    itensCart[productIndex].quantity += quantity;
+                }
             } else {
                 itensCart.push({ product: product, quantity });
             }
@@ -31,16 +33,15 @@ class CartController {
 
     async store({ request, response, auth, view, session }) {
         if (auth.user && auth.user.type == "client") {
+            const data = session.get("itensCart");
+            data.quantity = await request.only(["quantity", "id_pedido"]);
 
-           const data = session.get("itensCart");
-           data.quantity = await request.only(["quantity","id_pedido"]);
-           
-           const order =  await Order.create({
+            const order = await Order.create({
                 id_users: auth.user.id,
-                status: "aberto" 
-           });
-           
-           data.forEach(async (item) => {
+                status: "aberto"
+            });
+
+            data.forEach(async item => {
                 await OrderProduct.create({
                     id_orders: order.id,
                     id_products: item.product.id,
@@ -49,9 +50,10 @@ class CartController {
                     image: item.product.image,
                     quantity: item.quantity,
                     id_users: auth.user.id
-                })  
-           });
-           return view.render("/orderconfirm");
+                });
+            });
+            //return view.render("/orderconfirm");
+            return response.redirect("/order");
         }
     }
 

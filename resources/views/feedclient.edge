@@ -1,8 +1,10 @@
 @layout('logedtemplateclient')
 
 
-@section('list')
- <h2 class="mt-5">Escolha uma categoria de produtos:</h2>
+
+
+@section('content')
+<h2>Escolha uma categoria de produtos:</h2>
   @each(category in categories.toJSON())
     <ul class="list-group">
     <li    class="list-group-item"><a href="/category/{{category.id}}/product">{{category.category_name}}</a></li>

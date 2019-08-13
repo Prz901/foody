@@ -69,7 +69,7 @@ a {
 }
 
 p {
-    margin: 0.83rem 0;
+    margin: 0;
 }
 
 .register-box {
@@ -88,6 +88,7 @@ p {
 
 .logoutButton {
     margin-left: 5%;
+<<<<<<< HEAD
     text-decoration: none;
     color: #ffffff;
 }
@@ -96,6 +97,16 @@ p {
     margin-left: 75%;
     text-decoration: none;
     color: #ffffff;
+=======
+}
+
+.logoutAdmin {
+    margin-left: 4%;
+}
+
+.pedido {
+    margin-left: 70%;
+>>>>>>> 9602339199fef2ecf359d6b5605da9e788bb2e63
 }
 
 .buttonCart {

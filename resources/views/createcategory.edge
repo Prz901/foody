@@ -1,14 +1,13 @@
-@layout('LogedTemplate.edge')
-@section('navbar-admin')
-    <nav class="navbar navbar-expand-lg" class="menu">
-        <h1 class="navbar-brand"><a href="/admin">Foody</a></h1>
-        <a href="/logout" class="logoutButton" role="button" aria-pressed="true">Logout</a>
-    </nav>
+@layout('LogedTemplate')
+
+
+@section('sidebar')
 @endsection
-@section('form-edit')
+
+@section('content')
 <form action="/category" method="post" class="register-box">
     <h3>Insira as seguintes informações:</h3>
-    <label class="col-form-label-lg">Nome categoria: </label><input class="form-control" type="text" name="category_name"></input><br></br>
-    <input type="submit" class="btn btn-outline-danger btn-sm" value="Salvar"></input>
+    <label class="col-form-label-lg">Nome categoria: </label><input class="form-control" type="text" name="category_name"/><br>
+    <input type="submit" class="btn btn-outline-danger btn-sm" value="Salvar"/>
 </form>
 @endsection

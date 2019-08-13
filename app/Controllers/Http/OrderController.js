@@ -7,10 +7,13 @@ const User = use("App/Models/User");
 class OrderController {
     async index({ auth, view }) {
         const orders = await Order.all();
+        const clientOrder = await Order.query()
+            .with("user")
+            .fetch();
         if (auth.user && auth.user.type == "client") {
             return view.render("order", { orders });
         }
-        return view.render("adminListOrder", { orders });
+        return view.render("adminListOrder", { clientOrder });
     }
 
     async show({ params, view, response, auth }) {
@@ -27,7 +30,6 @@ class OrderController {
             await order.save();
             return response.redirect("/orderIndex");
         }
-
     }
 
     async destroy({ response, params, auth }) {
@@ -51,7 +53,8 @@ class OrderController {
         }'`
             )
             .fetch();
-        console.log(orders.toJSON());
+
+        return view.render("usersOrders", { orders });
     }
 }
 

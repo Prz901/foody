@@ -1,13 +1,14 @@
 @layout('LogedTemplate')
-@section('navbar-admin')
-    <nav class="navbar navbar-expand-lg" class="menu">
-      <h1 class="navbar-brand"><a href="/admin">Foody</a></h1>
-      <a href="/logout" class="logoutButton" role="button" aria-pressed="true">Logout</a>
-    </nav>
+
+
+@section('sidebar')
 @endsection
-@section('list')
+
+@section('content')
 <div class="container">
         <div class="row">
+          <p>Para adicionar uma nova categoria <a href="/createcategory" class="btn btn-outline-success btn-sm">+</a></p> 
+
 <table class="table  table-bordered  table-hover">
     <thead>
       <tr>
@@ -21,7 +22,7 @@
     
     <tbody>
       <tr>
-        @each(category in categories.toJSON())
+        @each(category in cat)
         </tr>
        
             <tr> 
@@ -40,11 +41,6 @@
         @endeach
     </tbody>
     
-<p>Para adicionar uma nova categoria <a href="/createcategory" class="btn btn-outline-success btn-sm">+</a></p> 
     </thead>
 </div>
-
-
-
-
 @endsection
