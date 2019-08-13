@@ -27,14 +27,14 @@
 <tbody>
 @each(product in products.toJSON())
 <form action="/product/{{product.id}}/cart" method="POST">
-<tr id="produto_{{product.id}}">
-    <td name="product_image">
-      <img class="img-product" src="{{product.image}}"/>
+<tr id="produto_{{product.id}}" class="text-center" >
+    <td name="product_image" >
+      <img  src="{{product.image}}" height="100px"/>
     </td>
-    <td>{{product.product_name}}</td>
-    <td>{{product.price}}</td>
+    <td >{{product.product_name}}</td>
+    <td>R$ {{product.price.toFixed(2)}}</td>
     <td>{{product.category.category_name}}</td>
-    <td><button type="submit">Salvar</button></td>
+    <td><button  type="submit">Comprar</button></td>
   </tr>
 </form>
 @endeach

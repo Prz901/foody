@@ -59,9 +59,8 @@ section:before {
 }
 
 .menu {
-    background: linear-gradient(45deg,#9d0039,#ec145a);
+    background: linear-gradient(45deg, #9d0039, #ec145a);
 }
-
 
 a {
     color: inherit;
@@ -86,9 +85,12 @@ p {
     margin-top: 10%;
 }
 
+td {
+    vertical-align: middle !important;
+}
+
 .logoutButton {
     margin-left: 5%;
-<<<<<<< HEAD
     text-decoration: none;
     color: #ffffff;
 }
@@ -97,16 +99,6 @@ p {
     margin-left: 75%;
     text-decoration: none;
     color: #ffffff;
-=======
-}
-
-.logoutAdmin {
-    margin-left: 4%;
-}
-
-.pedido {
-    margin-left: 70%;
->>>>>>> 9602339199fef2ecf359d6b5605da9e788bb2e63
 }
 
 .buttonCart {
@@ -137,6 +129,3 @@ p {
     background-color: #ed145b;
     color: #ffffff;
 }
-
-
-
