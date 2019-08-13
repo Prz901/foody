@@ -1,8 +1,8 @@
 @layout('template')
 @section('form-register')
 <div class="register-box">
-    <div class="logo"></div>
     <div class="form-box">
+    <img src="logomudi.svg" class="logo-mudi-inicio ml-5 mb-4"/>
       <form action="/register" method="POST">
         <fieldset>
           <legend>Register:</legend>
@@ -12,7 +12,7 @@
           <input type="email" class="form-control" name="email" ><br>
           Password:
           <input type="password" class="form-control" name="password"><br>
-          <input type="submit" class="btn btn-success" value="Register"><br>
+          <input type="submit" class="btn btn-success ml-5" value="Register"><br>
         </fieldset>
       </form> 
     </div>
