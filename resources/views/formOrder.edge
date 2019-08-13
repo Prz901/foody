@@ -1,11 +1,15 @@
 @layout('LogedTemplate.edge')
-@section('navbar-admin')
+@section('header-navbar')
     <nav class="navbar navbar-expand-lg" class="menu">
-        <h1 class="navbar-brand"><a href="/admin">Foody</a></h1>
-        <a href="/logout" class="logoutButton" role="button" aria-pressed="true">Logout</a>
+        <h1 class="navbar-brand"><a href="/admin">Mudi Market</a></h1>
+        <a href="/logout" class="logoutAdmin" role="button" aria-pressed="true">Logout</a>
     </nav>
 @endsection
-@section('form-edit')
+
+@section('sidebar')
+@endsection
+
+@section('content')
 <form action="/order/{{order.id}}/update" method="post" class="register-box">
     <h3>Insira as seguintes informações:</h3>
     <label class="col-form-label-lg">Status: </label><select name = "status" class="custom-select" id="inputGroupSelect01">

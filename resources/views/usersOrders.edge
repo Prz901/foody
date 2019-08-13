@@ -11,29 +11,27 @@
 
 @section('content')
 <table class="table table-striped">
-<form action="#" method="post">
+
 <thead>
   <tr>
-    <th scope="col">ID - User</th>
-    <th scope="col">Nome</th>
-    <th scope="col">Email</th>
-    <th scope="col" width='300'>Remover</th>
+    <th scope="col">Id do Pedido</th>
+    <th scope="col">Id do Usuario</th>
+    <th scope="col">Status</th>
   </tr>
 </thead>
 <tbody>
-@each(user in users.toJSON())
-  <tr>  
-    <td name="id">
-        {{ user.id }}
-    </td>
-    <td name="username">
-      {{ user.username }}
+@each(order in orders.toJSON())
+<form action="order/{{order.id_orders}}" method="post">
+  <tr> 
+    <td>
+      {{order.id}}
     </td>
     <td>
-        {{user.email}}
+        {{order.id_users}}
     </td>
+    <td>
+       {{order.status}}
     </td>
-    <td><a href="/user/{{user.id}}"><img src="lixeira.png" height="30" width="30"></img></a></td>
   </tr>
 @endeach
 </tbody>

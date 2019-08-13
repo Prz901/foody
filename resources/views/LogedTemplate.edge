@@ -8,29 +8,33 @@
         {{ style('style2'); }}
     </head>
     <body>
-    @section('navbar-admin')
-    @endsection
-    @section('navbar-client')
-    @endsection
-    @section('admin-home')
-    @endsection
-    @section('list')
-    @endsection
-    @section('table')
-    @endsection
-    @section('form-edit')
-    @endsection
-    @section('form-create')
-    @endsection
-
-    @section('List-orders')
-    @endsection
-    
-
-    @section('confirm-order')
-    @endsection
-
-
+        <div class="row">
+            <div class="col-12">
+                @section('header-navbar')
+                @endsection
+            </div>
+        </div>
+        <div class="row" style="min-height: 100vh">
+            <div class="col-2 mx-auto" style="border-right: 1px solid black; border-top: 1px solid black; background-color:"  style="min-height: 100%">
+                    @section('sidebar-admin')
+                        <p class="text-center">Bem vindo, {{auth.user.username}}</p>
+                        <ul class="nav flex-column">
+                            <li><a href="/category" class="btn btn-light btn active mt-2 w-100" max-width="200px"  role="button" aria-pressed="true">Categoria</a></li>
+                            <li><a href="/users" class="btn btn-light btn active mt-2 w-100" max-width="200px"  role="button" aria-pressed="true">Usuarios</a></li>
+                            <li><a href="/product" class="btn btn-light btn active mt-2 w-100" max-width="200px" role="button" aria-pressed="true">Produtos</a></li>
+                            <li><a href="/orderIndex" class="btn btn-light btn active mt-2 w-100" max-width="200px" role="button" aria-pressed="true">Pedidos</a></li>
+                        </ul>
+                    @endsection
+            </div>
+                @section('sidebar-client')
+                
+                @endsection
+            <div class="col-10">
+                @section('content')
+                @endsection
+               
+            </div>
+        </div>
     <script>
 
     $('[data-product]').each( (index,item)=>{
@@ -58,5 +62,6 @@
     
   
     </script>
+    
 </body>
 </html>

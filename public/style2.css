@@ -68,7 +68,7 @@ a {
 }
 
 p {
-    margin: 0.83rem 0;
+    margin: 0;
 }
 
 .register-box {
@@ -86,12 +86,15 @@ p {
 }
 
 .logoutButton {
-    margin-left: 75%;
+    margin-left: 5%;
+}
 
+.logoutAdmin {
+    margin-left: 4%;
 }
 
 .pedido {
-    margin-left: 80%;
+    margin-left: 70%;
 }
 
 .buttonCart {
