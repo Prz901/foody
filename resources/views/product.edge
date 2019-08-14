@@ -21,18 +21,18 @@
     <form action="/product" method="post">
       <tr>
         @each(product in products.toJSON())
-            <tr>
+            <tr >
                     <td name="id_product">
                         {{ product.id }}
                     </td>
-                    <td name="product_image">
-                        <img class="img-product" src="{{product.image}}"/>
+                    <td name="product_image" >
+                        <img class="img-product"  src="{{product.image}}" style="height:100px;"/>
                     </td>
                     <td name="product_name">
                         {{ product.product_name }}
                     </td>
                     <td name="price">
-                        R$ {{ product.price }}
+                        R$ {{ product.price.toFixed(2) }}
                     </td>
                     <td name="id_categories">
                         {{ product.category.category_name }}
