@@ -4,7 +4,7 @@
 <h2>Escolha uma categoria de produtos:</h2>
   @each(category in categories.toJSON())
     <ul class="list-group">
-    <li    class="list-group-item"><a href="/category/{{category.id}}/product">{{category.category_name}}</a></li>
+    <li class="list-group-item" ><a  style="text-decoration:none; color:black" href="/category/{{category.id}}/product">{{category.category_name}}</a></li>
     </ul>
   @endeach
 @endsection
