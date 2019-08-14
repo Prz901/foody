@@ -10,7 +10,7 @@
 <thead>
   <tr>
     <th scope="col">Id do Pedido</th>
-    <th scope="col">Id do Usuario</th>
+    <th scope="col">Nome do Usuario</th>
     <th scope="col">Status</th>
   </tr>
 </thead>
@@ -22,7 +22,7 @@
       {{order.id}}
     </td>
     <td>
-        {{order.id_users}}
+        {{order.user.username}}
     </td>
     <td>
        {{order.status}}

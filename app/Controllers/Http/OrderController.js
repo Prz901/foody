@@ -44,7 +44,7 @@ class OrderController {
         //const users = await user.toJSON();
         return view.render("formClientOrder", { users });
     }
-    
+
     async searchOrder({ request, view }) {
         const order = await request.only(["dataInicial", "dataFinal", "id_users"]);
         const orders = await Order.query()
@@ -53,6 +53,9 @@ class OrderController {
           order.dataFinal
         }' AND id_users = '${order.id_users}'`
             )
+            .orderBy("status", "asc")
+            .orderBy("id", "desc")
+            .with("user")
             .fetch();
 
         return view.render("usersOrders", { orders });
