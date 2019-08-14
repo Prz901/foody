@@ -29,7 +29,7 @@
     </td>
     <td>
       <div class="input-group mb-3">
-          R$ <input name="price" value="{{data.product.price}}" readonly/>
+          R$<input name="price" value="{{data.product.price.toFixed(2)}}" readonly/>
       </div>
     </td>
     <td>
@@ -43,12 +43,12 @@
           </div>
         </div>
       </td>
-      <td><a href="/cart/{{data.product.id}}/update"><img src="lixeira.png" height="30" width="30"></img></a></td>
+      <td><a href="/cart/{{data.product.id}}/update"><img src="lixeira.png" height="30" width="30"/></a></td>
   </tr>
   
 @endeach
 </tbody>
-<input type="submit" class="btn btn-success" value="Realizar Pedido"></input>
+<input type="submit" class="btn btn-success" style="margin-left:5%;" value="Realizar Pedido"/>
 <a href="/cart/clear" class="btn btn-danger buttonCart ">Limpar carrinho</a>
 </form>
 </table>
