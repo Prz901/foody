@@ -14,6 +14,12 @@
           <input type="date" lang="en" name="dataInicial" class="form-control"  placeholder="Data">
           <label for="exampleInputPassword1">Data Final:</label>
           <input type="date" lang="en" name="dataFinal" class="form-control"  placeholder="Data">
+            <label class="mt-1">Usuário:</label>
+            <select class="custom-select" id="inputGroupSelect01" name="id_users">
+              @each(user in users.toJSON())
+              <option value="{{user.id}}">{{user.username}}</option>
+              @endeach
+            </select>
         </div>
         <button type="submit"  class="btn btn-primary buttonData">Buscar</button>
 </form>
