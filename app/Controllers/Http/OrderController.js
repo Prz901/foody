@@ -41,10 +41,9 @@ class OrderController {
     }
     async list({ view, request, response }) {
         const users = await User.all();
-        //const users = await user.toJSON();
         return view.render("formClientOrder", { users });
     }
-    
+
     async searchOrder({ request, view }) {
         const order = await request.only(["dataInicial", "dataFinal", "id_users"]);
         const orders = await OrderProduct.query()
@@ -53,8 +52,8 @@ class OrderController {
           order.dataFinal
         }' AND id_users = '${order.id_users}'`
             )
-            .with('orders')
-            .with('users')
+            .with("orders")
+            .with("users")
             .fetch();
         return view.render("usersOrders", { orders });
     }
