@@ -5,12 +5,16 @@
 @endsection
 
 @section('content')
+<h2>Produtos por pedido</h2>
 <table class="table table-striped">
 
 <thead>
   <tr>
     <th scope="col">Id do Pedido</th>
     <th scope="col">Nome do Usuario</th>
+    <th scope="col">Produto</th>
+    <th scope="col">Preço</th>
+    <th scope="col">Quantidade</th>
     <th scope="col">Status</th>
   </tr>
 </thead>
@@ -19,13 +23,22 @@
 <form action="order/{{order.id_orders}}" method="post">
   <tr> 
     <td>
-      {{order.id}}
+        {{order.orders.id}}
     </td>
     <td>
-        {{order.user.username}}
+        {{order.users.username}}
     </td>
     <td>
-       {{order.status}}
+        {{order.product_name}}
+    </td>
+    <td>
+        R$ {{order.price.toFixed(2)}}
+    </td>
+    <td>
+        {{order.quantity}}
+    </td>
+    <td>
+        {{order.orders.status}}
     </td>
   </tr>
 @endeach

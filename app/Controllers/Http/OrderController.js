@@ -41,23 +41,20 @@ class OrderController {
     }
     async list({ view, request, response }) {
         const users = await User.all();
-        //const users = await user.toJSON();
         return view.render("formClientOrder", { users });
     }
 
     async searchOrder({ request, view }) {
         const order = await request.only(["dataInicial", "dataFinal", "id_users"]);
-        const orders = await Order.query()
+        const orders = await OrderProduct.query()
             .whereRaw(
                 `date(created_at) BETWEEN '${order.dataInicial}' AND '${
           order.dataFinal
         }' AND id_users = '${order.id_users}'`
             )
-            .orderBy("status", "asc")
-            .orderBy("id", "desc")
-            .with("user")
+            .with("orders")
+            .with("users")
             .fetch();
-
         return view.render("usersOrders", { orders });
     }
 }
