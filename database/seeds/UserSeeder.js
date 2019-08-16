@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 /*
 |--------------------------------------------------------------------------
@@ -11,14 +11,24 @@
 */
 
 /** @type {import('@adonisjs/lucid/src/Factory')} */
-const Factory = use('Factory');
-const User = use('App/Models/User');
+const Factory = use("Factory");
+const User = use("App/Models/User");
 
 class UserSeeder {
-  async run () {
-    await User.create({username:'admin1', email:'admin1@test.com', password:'123', type:'admin'});
-    await User.create({username:'admin2', email:'admin2@test.com', password:'123', type:'admin'});
-  }
+    async run() {
+        await User.create({
+            username: "Isabela",
+            email: "isabela@test.com",
+            password: "MudiIsabela#!",
+            type: "admin"
+        });
+        await User.create({
+            username: "Bruno",
+            email: "bruno@test.com",
+            password: "MudiBruno#!",
+            type: "admin"
+        });
+    }
 }
 
-module.exports = UserSeeder
+module.exports = UserSeeder;
