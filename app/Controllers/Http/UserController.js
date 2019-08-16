@@ -16,7 +16,7 @@ class UserController {
         const data = await request.only(["username", "email", "password"]);
         data.type = "client";
         const user = await User.create(data);
-        response.status(200).send(user);
+        return response.redirect("/");
     }
 
     async login({ response, params }) {
