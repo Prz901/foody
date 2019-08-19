@@ -18,14 +18,14 @@ class UserSeeder {
     async run() {
         await User.create({
             username: "Isabela",
-            email: "isabela@test.com",
-            password: "MudiIsabela#!",
+            email: "isabela@mudisaude.com",
+            password: "MudiIsabela",
             type: "admin"
         });
         await User.create({
             username: "Bruno",
-            email: "bruno@test.com",
-            password: "MudiBruno#!",
+            email: "bruno@mudisaude.com",
+            password: "MudiBruno",
             type: "admin"
         });
     }
