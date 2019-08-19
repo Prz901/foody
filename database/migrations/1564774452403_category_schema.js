@@ -8,6 +8,12 @@ class CategorySchema extends Schema {
         this.create("categories", table => {
             table.increments();
             table.string("category_name").notNullable();
+            table
+                .integer("id_users")
+                .unsigned()
+                .notNullable()
+                .references("id")
+                .inTable("users");
             table.timestamps();
         });
     }
